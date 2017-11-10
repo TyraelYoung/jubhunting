@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/findjob.iml" filepath="$PROJECT_DIR$/.idea/modules/findjob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/findjob_main.iml" filepath="$PROJECT_DIR$/.idea/modules/findjob_main.iml" group="findjob" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/findjob_test.iml" filepath="$PROJECT_DIR$/.idea/modules/findjob_test.iml" group="findjob" />
+    </modules>
+  </component>
+</project>
