@@ -11,10 +11,10 @@ package wang.tyrael.leetcode;
  Because nums[0] + nums[1] = 2 + 7 = 9,
  return [0, 1].
  */
-public class TwoSum {
+public class TwoSum1 {
     public static void main(String[] args){
         int[] nums = new int[]{2, 7, 11, 15};
-        int[] result = new TwoSum().twoSum(nums, 9);
+        int[] result = new TwoSum1().twoSum(nums, 9);
         System.out.println("result[0]:" + result[0]);
         System.out.println("result[1]:" + result[1]);
         //正常开关没有打开
