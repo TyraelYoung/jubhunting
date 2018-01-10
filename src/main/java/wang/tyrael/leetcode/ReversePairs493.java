@@ -3,6 +3,23 @@ package wang.tyrael.leetcode;
 import java.util.Arrays;
 import java.util.Collections;
 
+
+//Given an array nums, we call (i, j) an important reverse pair if i < j and nums[i] > 2*nums[j].
+//
+//        You need to return the number of important reverse pairs in the given array.
+//
+//        Example1:
+//
+//        Input: [1,3,2,3,1]
+//        Output: 2
+//        Example2:
+//
+//        Input: [2,4,3,5,1]
+//        Output: 3
+//        Note:
+//        The length of the given array will not exceed 50,000.
+//        All the numbers in the input array are in the range of 32-bit integer.
+
 public class ReversePairs493 {
     public static void main(String args[]){
         ReversePairs493 reversePairs493 = new ReversePairs493();
@@ -22,6 +39,8 @@ public class ReversePairs493 {
 
         result = reversePairs493.reversePairs(new int[]{});
         System.out.println("[]:" + 0 + ":" + result);
+
+//        reversePairs493.testBinSearchBig();
     }
 
     /**
@@ -151,41 +170,60 @@ public class ReversePairs493 {
         return j;
     }
 
+
+    private void testBinSearchBig(){
+        int[] nums = new int[]{1,3,2,3,1};
+        Arrays.sort(nums);
+        printArray(nums);
+        int result = binSearchBig(nums, 2, 3, 1);
+        System.out.println("****************");
+        System.out.println(result);
+    }
+
+    private void printArray(int[] n){
+        for(int i :n){
+            System.out.print("" + i + ",");
+        }
+    }
+
     /**
-     * 从前往后，找到第一个比key大的数
+     * 从前往后，找到第一个比key大或者=的数
      * 则，前面的数，都比key小
      * TODO 改用二分查找
      * @param nums 要求已排序
      * @param start
      * @param stop
      * @param key
-     * @return
+     * @return 如果所有数都小于key，则返回stop+1
      */
     private int binSearchBig(int[] nums, int start, int stop, double key){
         if(start == stop){
-            if(nums[start] > key){
+            if(nums[start] >= key){
                 return start;
             }else{
-                return stop +1;
+                return stop+1;
             }
         }
         int mid = (stop - start)/2 + start;
         if(nums[mid] == key){
-            //可疑值在mid右边，不包含
-            while (mid <= stop){
-                mid++;
-                if(nums[mid] > key){
-                    return mid;
+            //可疑值在mid左边，包含
+            while (mid >= start){
+                mid--;
+                if(nums[mid] < key){
+                    return mid +1;
                 }
             }
-            //没找到
-            return stop + 1;
+            if(mid == start-1){
+                return start;
+            }
         }
         if(nums[mid] > key){
             //可疑值在mid左边，包含
-            return binSearchBig(nums, start, mid, key);
+            int result = binSearchBig(nums, start, mid, key);
+            return result;
         }else{
-            //可疑值在mid右边边，不包含
+            //可疑值在mid右边，不包含
+
             return binSearchBig(nums, mid+1, stop, key);
         }
     }
