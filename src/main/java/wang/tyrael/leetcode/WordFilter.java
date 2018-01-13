@@ -1,6 +1,10 @@
 package wang.tyrael.leetcode;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 //Given many words, words[i] has weight i.
 //
 //        Design a class WordFilter that supports one function, WordFilter.f(String prefix, String suffix). It will return the word with given prefix and suffix with maximum weight. If no word exists, return -1.
@@ -26,9 +30,23 @@ class WordFilter {
     }
 
     private String[] words;
+    private TreeNode root = new TreeNode();
 
+    /**
+     *  构造一棵树
+     * @param words
+     */
     public WordFilter(String[] words) {
         this.words = words;
+        for(int i=0; i< words.length; i++){
+            String word = words[i];
+            TreeNode parent = root;
+            //查找
+            // 如果找打了，则更新weight
+            //没找到则插入
+            for()
+
+        }
     }
 
     public int f(String prefix, String suffix) {
@@ -39,6 +57,11 @@ class WordFilter {
             }
         }
         return -1;
+    }
+
+    public static class TreeNode{
+        public int weight;
+        public Map<Character, TreeNode> children = new HashMap<>();
     }
 }
 
