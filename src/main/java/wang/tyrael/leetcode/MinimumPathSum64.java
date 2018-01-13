@@ -32,29 +32,15 @@ public class MinimumPathSum64 {
 
         for (i = rowCount-2; i >= 0; i--){
             for(j = columnCount-2; j >=0; j--){
-
-
+                if(min[i+1][j] > min[i][j+1]){
+                    min[i][j] = grid[i][j] + min[i][j+1];
+                }else{
+                    min[i][j] = grid[i][j] + min[i+1][j];
+                }
             }
         }
 
-        return 0;
+        return min[0][0];
 
-    }
-
-    /**
-     * i,j 为起点的最小值
-     * @param grid
-     * @param i
-     * @param j
-     * @return
-     */
-    private int min(int[][] grid, int i, int j){
-        int thisCell = grid[i][j];
-        int right = min(grid, i, j+1);
-        int down = min(grid, i+1, j);
-        return 0;
-//        if(){
-//
-//        }
     }
 }
