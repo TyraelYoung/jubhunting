@@ -21,47 +21,103 @@ import java.util.Map;
 //        prefix, suffix have lengths in range [0, 10].
 //        words[i] and prefix, suffix queries consist of lowercase letters only.
 class WordFilter {
-    public static void main(String[] args) {
-        WordFilter obj = new WordFilter(new String[]{"apple"});
-        int param_1 = obj.f("a", "e");
-        System.out.println("0:" + param_1);
-        param_1 = obj.f("b", "");
-        System.out.println("-1:" + param_1);
-    }
-
     private String[] words;
     private TreeNode root = new TreeNode();
 
     /**
-     *  构造一棵树
+     * 构造一棵树
+     *
      * @param words
      */
     public WordFilter(String[] words) {
         this.words = words;
-        for(int i=0; i< words.length; i++){
+
+        for (int i = 0; i < words.length; i++) {
             String word = words[i];
-            TreeNode parent = root;
             //查找
             // 如果找打了，则更新weight
             //没找到则插入
-            for()
+            TreeNode parent = root;
+            for (int index = 0; index <= word.length(); index++) {
+                //逐个前缀
+                char c;
+                if(index == 0){
+                    String full = word;
+                    insertSuffix(parent, full, i);
+                }else{
+                    c = word.charAt(index-1);
+                    TreeNode treeNode = new TreeNode(i);
+                    parent.children.put(c, treeNode);
+                    String full = word;
+                    insertSuffix(treeNode, full, i);
+                    parent = treeNode;
+                }
 
+            }
+        }
+    }
+
+    private void insertSuffix(TreeNode parent, String fullSuffix, int weight){
+        //先插入一个空格
+        char current = ' ';
+        TreeNode treeNode;
+        treeNode = parent.children.get(current);
+        if(treeNode == null){
+            treeNode = new TreeNode(weight);
+            parent.children.put(current, treeNode);
+        }else{
+            if(treeNode.weight < weight){
+                treeNode.weight = weight;
+            }
+        }
+        parent = treeNode;
+
+        //从尾部向前逐个插入
+        for(int i = fullSuffix.length() -1; i>=0; i--){
+            current = fullSuffix.charAt(i);
+            treeNode = parent.children.get(current);
+            if(treeNode == null){
+                treeNode = new TreeNode(weight);
+                parent.children.put(current, treeNode);
+            }else{
+                if(treeNode.weight < weight){
+                    treeNode.weight = weight;
+                }
+            }
+            parent = treeNode;
         }
     }
 
     public int f(String prefix, String suffix) {
-        for(int i= words.length-1; i>=0; i--){
-            String word = words[i];
-            if(word.startsWith(prefix) && word.endsWith(suffix)){
-                return i;
-            }
-        }
-        return -1;
+        return find(prefix + " " + new StringBuilder(suffix).reverse());
     }
 
-    public static class TreeNode{
-        public int weight;
+    private int find(String key){
+        //顺着根逐层往下找
+        TreeNode parent = root;
+        TreeNode leafNode;
+        for(int i = 0; i<key.length();i++ ){
+            char current = key.charAt(i);
+            TreeNode next = root.children.get(current);
+            if(next == null){
+                return -1;
+            }else{
+                parent = next;
+            }
+        }
+        return parent.weight;
+    }
+
+    public static class TreeNode {
+        public int weight = -2;
         public Map<Character, TreeNode> children = new HashMap<>();
+
+        public TreeNode() {
+        }
+
+        public TreeNode(int weight) {
+            this.weight = weight;
+        }
     }
 }
 
