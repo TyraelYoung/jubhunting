@@ -23,6 +23,7 @@ import java.util.Map;
 class WordFilter {
     private String[] words;
     private TreeNode root = new TreeNode();
+    private boolean debug;
 
     /**
      * 构造一棵树
@@ -30,6 +31,7 @@ class WordFilter {
      * @param words
      */
     public WordFilter(String[] words) {
+        long start = System.currentTimeMillis();
         this.words = words;
 
         for (int i = 0; i < words.length; i++) {
@@ -40,21 +42,36 @@ class WordFilter {
             TreeNode parent = root;
             for (int index = 0; index <= word.length(); index++) {
                 //逐个前缀
-                char c;
+                char current = ' ';
                 if(index == 0){
                     String full = word;
                     insertSuffix(parent, full, i);
                 }else{
-                    c = word.charAt(index-1);
-                    TreeNode treeNode = new TreeNode(i);
-                    parent.children.put(c, treeNode);
+                    int weight = i;
+                    current = word.charAt(index-1);
+                    TreeNode treeNode;
+                    treeNode = parent.children.get(current);
+                    if(treeNode == null){
+                        treeNode = new TreeNode(weight);
+                        parent.children.put(current, treeNode);
+                    }else{
+                        if(treeNode.weight < weight){
+                            treeNode.weight = weight;
+                        }
+                    }
+                    treeNode.value = current;
+
                     String full = word;
                     insertSuffix(treeNode, full, i);
                     parent = treeNode;
+
                 }
 
             }
         }
+//        printTree();
+        long end = System.currentTimeMillis();
+//        System.out.println("构建耗时：" + (end-start));
     }
 
     private void insertSuffix(TreeNode parent, String fullSuffix, int weight){
@@ -70,6 +87,7 @@ class WordFilter {
                 treeNode.weight = weight;
             }
         }
+        treeNode.value = current;
         parent = treeNode;
 
         //从尾部向前逐个插入
@@ -84,32 +102,49 @@ class WordFilter {
                     treeNode.weight = weight;
                 }
             }
+            treeNode.value = current;
             parent = treeNode;
         }
     }
 
     public int f(String prefix, String suffix) {
-        return find(prefix + " " + new StringBuilder(suffix).reverse());
+        long start = System.currentTimeMillis();
+        int result = find(prefix + " " + new StringBuilder(suffix).reverse());
+        long end = System.currentTimeMillis();
+//        System.out.println("查询耗时：" + (end-start));
+        return result;
     }
 
     private int find(String key){
+//        System.out.println("find:"+key);
+//        System.out.println("root:"+root);
         //顺着根逐层往下找
         TreeNode parent = root;
-        TreeNode leafNode;
         for(int i = 0; i<key.length();i++ ){
+
             char current = key.charAt(i);
-            TreeNode next = root.children.get(current);
+
+//            System.out.println("下一个节点:" + current);
+//            System.out.println("下一个节点:parent:" + parent);
+//            print(parent, 0);
+
+            TreeNode next = parent.children.get(current);
             if(next == null){
                 return -1;
             }else{
                 parent = next;
             }
+//            System.out.println("下一个节点:next:" + next);
+
         }
+//        System.out.println("结果:" );
+//        print(parent, 0);
         return parent.weight;
     }
 
     public static class TreeNode {
         public int weight = -2;
+        public char value;
         public Map<Character, TreeNode> children = new HashMap<>();
 
         public TreeNode() {
@@ -118,6 +153,24 @@ class WordFilter {
         public TreeNode(int weight) {
             this.weight = weight;
         }
+    }
+
+    public void printTree(){
+
+        print(root, 0);
+        System.out.println();
+    }
+
+    public void print(TreeNode treeNode, int level){
+//        System.out.println();
+        for(int i=0; i< level; i++){
+            System.out.print('-');
+        }
+//        System.out.print(treeNode.value);
+        for(Map.Entry<Character, TreeNode> entry :treeNode.children.entrySet() ){
+            print(entry.getValue(), level+1);
+        }
+
     }
 }
 
