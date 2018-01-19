@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.alibaba:fastjson:1.2.44'
+    compile 'com.alibaba:fastjson:latest.release'
+    compile 'com.google.guava:guava:23.6-jre'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
