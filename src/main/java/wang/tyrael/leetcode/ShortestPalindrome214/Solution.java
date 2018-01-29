@@ -9,7 +9,7 @@ public class Solution {
             return  s;
         }
         int midLeft ;
-        midLeft = s.length() /2 -1;
+         midLeft = s.length() /2 -1;
 
 
         // 每一个都可能是最靠近中轴的
