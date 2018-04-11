@@ -3,6 +3,19 @@ package wang.tyrael;
 import java.util.List;
 
 public class MathUtil {
+    public static double average(List<Integer> candidate){
+        return sum(candidate) / (double)candidate.size();
+    }
+
+    public static int sum(List<Integer> candidate){
+        int sum = 0;
+        for (int i :
+                candidate) {
+            sum += i;
+        }
+        return sum;
+    }
+
     public static int max(int[] candidate){
         int max = Integer.MIN_VALUE;
         for(int i=0; i< candidate.length; i++){
