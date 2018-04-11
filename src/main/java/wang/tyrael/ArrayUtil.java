@@ -1,11 +1,73 @@
 package wang.tyrael;
 
+import com.alibaba.fastjson.JSON;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ArrayUtil {
+    public static List<Integer> toList(int[] a){
+        List<Integer> list = new ArrayList<>();
+        for (int i :
+                a) {
+            list.add(i);
+        }
+        return list;
+    }
+
+    public static int[] parse(String s){
+        List<Integer> list = JSON.parseArray(s, Integer.class);
+        int[] a = new int[list.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = list.get(i);
+        }
+        return a;
+    }
+
+    public static String[] getString(String s){
+        List<String> list = JSON.parseArray(s, String.class);
+        String[] a = new String[list.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = list.get(i);
+        }
+        return a;
+    }
+
+    public static List<List<String>> parse2DString(String s){
+        List<String> ls = JSON.parseArray(s, String.class);
+        List<List<String>> result = new ArrayList<>();
+        for (String s1 :
+                ls) {
+            result.add(JSON.parseArray(s1, String.class));
+        }
+        return result;
+    }
+
+    public static Object[] parse2D(String s){
+        List<String> ls = JSON.parseArray(s, String.class);
+        int[][] result = new int[ls.size()][];
+        for (int i = 0; i < ls.size(); i++) {
+            String item = ls.get(i);
+            List<Integer> lo = JSON.parseArray(item, Integer.class);
+            result[i] = new int[lo.size()];
+            for (int j = 0; j < lo.size(); j++) {
+                result[i][j] = lo.get(j);
+            }
+        }
+        return result;
+    }
+
     public static void printArray(int[] n){
         for(int i :n){
             System.out.print("" + i + ",");
+        }
+    }
+
+    public static void print(List<String> list){
+        for (String s :
+                list) {
+            System.out.print(s + ",");
         }
     }
 
