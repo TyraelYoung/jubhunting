@@ -59,6 +59,11 @@ public class Solution {
     private List<String> wordList;
     String endWord;
 
+    /**
+     * 1 表示可连通
+     * -1 表示不可连通
+     * 0 表示没计算
+     */
     int[][] graph;
     int endIndex =-1;
     //队列辅助，实现按层访问，宽度搜索
@@ -76,7 +81,8 @@ public class Solution {
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         init();
-        calculateGraph(wordList);
+        //calculateGraph(wordList);
+        graph = new int[wordList.size()][wordList.size()];
         this.endWord = endWord;
         this.wordList = wordList;
         for (int i = 0; i < wordList.size(); i++) {
@@ -148,6 +154,16 @@ public class Solution {
                 //该节点的下属加入队列
                 for (int i = 0; i < wordList.size(); i++) {
                     int isNear = graph[next.index][i];
+                    if(isNear == 0){
+                        boolean bNear = isNear(wordList.get(next.index), wordList.get(i));
+                        if(bNear){
+                            graph[next.index][i] = 1;
+                        }else{
+                            graph[next.index][i] = -1;
+                        }
+                        isNear = graph[next.index][i];
+                    }
+
                     if(isNear == 1 && !isVisited(next, i)){
                         Node child = new Node(wordList.get(i), i, next);
                         queue.add(child);
@@ -178,6 +194,9 @@ public class Solution {
                 if(isNear(a, b)){
                     graph[i][j] = 1;
                     graph[j][i] = 1;
+                }else{
+                    graph[i][j] = -1;
+                    graph[j][i] = -1;
                 }
             }
         }
