@@ -5,6 +5,6 @@ package wang.tyrael.leetcode.KthSmallest719;
  */
 public class Solution {
     public int smallestDistancePair(int[] nums, int k) {
-
+        return 0;
     }
 }
