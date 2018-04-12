@@ -71,6 +71,13 @@ public class ArrayUtil {
         }
     }
 
+    public static void printInt(List<Integer> list){
+        for (Integer s :
+                list) {
+            System.out.print(s + ",");
+        }
+    }
+
     private void testBinSearchBig(){
         int[] nums = new int[]{1,3,2,3,1};
         Arrays.sort(nums);

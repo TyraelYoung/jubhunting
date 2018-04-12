@@ -18,6 +18,9 @@ import java.util.*;
  * <p>
  * 1， 暴力 n！ bfs 指数
  * 2，双向bfs
+ *
+ *
+ * 处理一下一个单词对应树中多个节点的问题。
  */
 
 /**
@@ -75,10 +78,10 @@ public class Solution {
     Set<String> startSet;
     Set<String> endSet;
 
-    List<String> meetPoint;
+    Set<String> meetPoint;
 
-    Map<String, Node> startValueToNode;
-    Map<String, Node> endValueToNode;
+    Map<String, List<Node>> startValueToNode;
+    Map<String, List<Node>> endValueToNode;
 
     static Node LEVEL_END = new Node(-2);
 
@@ -93,12 +96,13 @@ public class Solution {
         endValueToNode = new HashMap<>();
         startQueue = new LinkedList<>();
         endQueue = new LinkedList<>();
+        meetPoint = new HashSet<>();
     }
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         init();
-        calculateGraph(wordList);
-        //graph = new int[wordList.size()][wordList.size()];
+        //calculateGraph(wordList);
+        graph = new int[wordList.size()][wordList.size()];
         this.endWord = endWord;
         this.wordList = wordList;
         for (int i = 0; i < wordList.size(); i++) {
@@ -112,50 +116,55 @@ public class Solution {
 
         startRoot = new Node(beginWord, -1);
         endRoot = new Node(endWord, endIndex);
-        startQueue.add(startRoot);
-        startQueue.add(LEVEL_END);
-        endQueue.add(endRoot);
-        endQueue.add(LEVEL_END);
-        startSet.add(beginWord);
-        endSet.add(endWord);
-        startValueToNode.put(beginWord, startRoot);
-        endValueToNode.put(endWord, endRoot);
 
-        while (true) {
-            boolean toContinueStart = startNextLevel();
-            if(flagFind){
-                break;
-            }
-            boolean toContinueEnd = endNextLevel();
-            if(flagFind){
-                break;
-            }
-            if (toContinueStart && toContinueEnd) {
+        initStartQueue(beginWord);
+        initEndQueue(endWord);
 
-            } else {
-                break;
+        if (!flagFind) {
+            while (true) {
+                boolean toContinueStart = startNextLevel();
+                if (flagFind) {
+                    break;
+                }
+                boolean toContinueEnd = endNextLevel();
+                if (flagFind) {
+                    break;
+                }
+                if (toContinueStart && toContinueEnd) {
+
+                } else {
+                    break;
+                }
             }
         }
-        if (flagFind) {
 
+
+        if (flagFind) {
             List<List<String>> resultFormat = new ArrayList<>();
             for (String meet : meetPoint) {
-                Node meetInEnd = endValueToNode.get(meet);
-                Node meetInStart = startValueToNode.get(meet);
+                List<Node> meetInEnd = endValueToNode.get(meet);
+                List<Node> meetInStart = startValueToNode.get(meet);
 
-                List<String> item = new ArrayList<>();
+                for (Node nodeInStart :
+                        meetInStart) {
+                    for (Node nodeInEnd :
+                            meetInEnd) {
+                        List<String> item = new ArrayList<>();
 
-                Node next = meetInStart;
-                while (next != null) {
-                    item.add(0, next.word);
-                    next = next.parent;
+                        Node next = nodeInStart;
+                        while (next != null) {
+                            item.add(0, next.word);
+                            next = next.parent;
+                        }
+                        next = nodeInEnd.parent;
+
+                        while (next != null) {
+                            item.add(next.word);
+                            next = next.parent;
+                        }
+                        resultFormat.add(item);
+                    }
                 }
-                next = meetInEnd;
-                while (next != null) {
-                    item.add(next.word);
-                    next = next.parent;
-                }
-                resultFormat.add(item);
             }
 
             //转化一下
@@ -167,8 +176,21 @@ public class Solution {
 
     }
 
+    public void putNode(Map<String, List<Node>> map, Node node){
+        List<Node> list = map.get(node.word);
+        if(list == null){
+            list = new ArrayList<>();
+            list.add(node);
+            map.put(node.word, list);
+        }else{
+            list.add(node);
+        }
+    }
+
+
     /**
      * 处理一层的结果
+     *
      * @return
      */
     boolean endNextLevel() {
@@ -204,7 +226,7 @@ public class Solution {
                 if (isNear == 1 && !endSet.contains(child)) {
                     Node nchild = new Node(wordList.get(i), i, next);
                     endQueue.add(nchild);
-                    startValueToNode.put(child, nchild);
+                    putNode(endValueToNode, nchild);
                     endSet.add(child);
 
                     if (startSet.contains(child)) {
@@ -221,8 +243,34 @@ public class Solution {
         }
     }
 
+    void initStartQueue(String beginWord) {
+        for (int i = 0; i < wordList.size(); i++) {
+            String b = wordList.get(i);
+            if (isNear(beginWord, b)) {
+                Node node = new Node(b, i, startRoot);
+                startQueue.add(node);
+                startSet.add(b);
+                putNode(startValueToNode, node);
+            }
+        }
+        startQueue.add(LEVEL_END);
+    }
+
+    void initEndQueue(String endWord) {
+        endQueue.add(endRoot);
+        endSet.add(endWord);
+        putNode(endValueToNode, endRoot);
+        if (startSet.contains(endWord)) {
+            flagFind = true;
+            meetPoint.add(endWord);
+        }
+
+        endQueue.add(LEVEL_END);
+    }
+
     /**
      * 处理一层的结果
+     *
      * @return
      */
     boolean startNextLevel() {
@@ -230,48 +278,57 @@ public class Solution {
             //只有一个标记节点
             return false;
         }
-        while (!startQueue.isEmpty()) {
+        while (true) {
             Node next = startQueue.poll();
             if (next.index == -2) {
                 //本层处理完毕
                 startQueue.add(LEVEL_END);
                 return true;
-            } else {
-                //子节点加入树，并检查是否碰头了
-                for (int i = 0; i < wordList.size(); i++) {
+            }
 
-                    int isNear = graph[next.index][i];
-                    if (isNear == 0) {
-                        boolean bNear = isNear(wordList.get(next.index), wordList.get(i));
-                        if (bNear) {
-                            graph[next.index][i] = 1;
-                            graph[i][next.index] = 1;
-                        } else {
-                            graph[next.index][i] = -1;
-                            graph[i][next.index] = -1;
-                        }
-                        isNear = graph[next.index][i];
-                    }
-                    String child = wordList.get(i);
-                    if (isNear == 1 && !startSet.contains(child)) {
-                        Node nchild = new Node(wordList.get(i), i, next);
-                        startQueue.add(nchild);
-                        startValueToNode.put(child, nchild);
-                        startSet.add(child);
+            //子节点加入树，并检查是否碰头了
+            for (int i = 0; i < wordList.size(); i++) {
 
-                        if (endSet.contains(child)) {
-                            flagFind = true;
-                            meetPoint.add(child);
-                        }
-
+                int isNear = graph[next.index][i];
+                if (isNear == 0) {
+                    boolean bNear = isNear(wordList.get(next.index), wordList.get(i));
+                    if (bNear) {
+                        graph[next.index][i] = 1;
+                        graph[i][next.index] = 1;
                     } else {
-                        //不相邻，查看下一个节点
+                        graph[next.index][i] = -1;
+                        graph[i][next.index] = -1;
+                    }
+                    isNear = graph[next.index][i];
+                }
+                String child = wordList.get(i);
+                if (isNear == 1 && !isInPath(next, i)) {
+                    Node nchild = new Node(wordList.get(i), i, next);
+                    startQueue.add(nchild);
+                    putNode(startValueToNode, nchild);
+                    startSet.add(child);
+
+                    if (endSet.contains(child)) {
+                        flagFind = true;
+                        meetPoint.add(child);
                     }
 
+                } else {
+                    //不相邻，查看下一个节点
                 }
+
             }
         }
-        throw new RuntimeException();
+     }
+
+    public boolean isInPath(Node parent, int index){
+        while(parent != null){
+            if(parent.index == index){
+                return true;
+            }
+            parent = parent.parent;
+        }
+        return false;
     }
 
 
@@ -293,17 +350,18 @@ public class Solution {
     }
 
     public void printGraph() {
-        for (int i = 0; i < graph.length; i++) {
-            System.out.println();
-            int[] item = graph[i];
-            for (int j = 0; j < item.length; j++) {
-                System.out.print(" " + item[j]);
-            }
-        }
+//        for (int i = 0; i < graph.length; i++) {
+//            System.out.println();
+//            int[] item = graph[i];
+//            for (int j = 0; j < item.length; j++) {
+//                System.out.print(" " + item[j]);
+//            }
+//        }
     }
 
     /**
      * 不包含相同的
+     *
      * @param a
      * @param b
      * @return

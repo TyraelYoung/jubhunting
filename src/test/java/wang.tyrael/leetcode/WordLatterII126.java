@@ -8,6 +8,54 @@ import wang.tyrael.leetcode.wordlatterII126.Solution;
 import java.util.List;
 
 public class WordLatterII126 {
+//    Input:
+//            "hot"
+//            "dog"
+//            ["hot","cog","dog","tot","hog","hop","pot","dot"]
+//    Output:
+//            [["hot","hog","dog"]]
+//    Expected:
+//            [["hot","dot","dog"],["hot","hog","dog"]]
+    @Test
+    public void test4(){
+        Solution s = new Solution();
+        String begin,end;
+        List<String> list;
+        List<List<String>> result;
+        begin = "hot";
+        end = "dog";
+
+        list = JSON.parseArray("[\"hot\",\"cog\",\"dog\",\"tot\",\"hog\",\"hop\",\"pot\",\"dot\"]", String.class);
+        long startTime = System.currentTimeMillis();
+        result = s.findLadders(begin, end, list);
+        long endTime = System.currentTimeMillis();
+        System.out.println("耗时：" + (endTime - startTime));
+        s.printGraph();
+        print(result);
+    }
+
+
+//    "a"
+//            "c"
+//            ["a","b","c"]
+    @Test
+    public void test3(){
+        Solution s = new Solution();
+        String begin,end;
+        List<String> list;
+        List<List<String>> result;
+        begin = "a";
+        end = "c";
+
+        list = JSON.parseArray("[\"a\",\"b\",\"c\"]", String.class);
+        long startTime = System.currentTimeMillis();
+        result = s.findLadders(begin, end, list);
+        long endTime = System.currentTimeMillis();
+        System.out.println("耗时：" + (endTime - startTime));
+        s.printGraph();
+        print(result);
+    }
+
 //    "cet"
 //            "ism"
 //            ["kid","tag","pup","ail","tun","woo","erg","luz","brr","gay","sip","kay","per","val","mes",
@@ -78,27 +126,27 @@ public class WordLatterII126 {
         s.printGraph();
         print(result);
     }
-//
-//    @Test
-//    public void test1(){
-//        Solution s = new Solution();
-//        String begin,end;
-//        List<String> list;
-//        List<List<String>> result;
-//        begin = "hit";
-//        end = "dot";
-//        list = JSON.parseArray("[\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]", String.class);
-//        result = s.findLadders(begin, end, list);
-//        s.printGraph();
-//        print(result);
-//    }
-//
-//    @Test
-//    public void testIsNear(){
-//        Solution s = new Solution();
-//        boolean result = s.isNear("hot", "dot");
-//        assert result;
-//    }
+
+    @Test
+    public void test1(){
+        Solution s = new Solution();
+        String begin,end;
+        List<String> list;
+        List<List<String>> result;
+        begin = "hit";
+        end = "dot";
+        list = JSON.parseArray("[\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]", String.class);
+        result = s.findLadders(begin, end, list);
+        s.printGraph();
+        print(result);
+    }
+
+    @Test
+    public void testIsNear(){
+        Solution s = new Solution();
+        boolean result = s.isNear("hot", "dot");
+        assert result;
+    }
 
     void print(List<List<String>> result){
         for (List<String> item:
@@ -106,5 +154,6 @@ public class WordLatterII126 {
             System.out.println();
             ArrayUtil.print(item);
         }
+
     }
 }
