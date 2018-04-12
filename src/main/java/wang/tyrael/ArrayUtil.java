@@ -44,7 +44,7 @@ public class ArrayUtil {
         return result;
     }
 
-    public static Object[] parse2D(String s){
+    public static int[][] parse2D(String s){
         List<String> ls = JSON.parseArray(s, String.class);
         int[][] result = new int[ls.size()][];
         for (int i = 0; i < ls.size(); i++) {
@@ -63,6 +63,18 @@ public class ArrayUtil {
             System.out.print("" + i + ",");
         }
     }
+
+    public static void print(int[][] n){
+        System.out.println("array:");
+        for (int i = 0; i < n.length; i++) {
+            int[] a = n[i];
+            for (int j = 0; j < a.length; j++) {
+                System.out.print(a[j] + ",");
+            }
+            System.out.println();
+        }
+    }
+
 
     public static void print(List<String> list){
         for (String s :
