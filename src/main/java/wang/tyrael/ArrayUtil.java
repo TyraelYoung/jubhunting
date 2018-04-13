@@ -25,7 +25,7 @@ public class ArrayUtil {
         return a;
     }
 
-    public static String[] getString(String s){
+    public static String[] parseString(String s){
         List<String> list = JSON.parseArray(s, String.class);
         String[] a = new String[list.size()];
         for (int i = 0; i < a.length; i++) {
@@ -58,9 +58,36 @@ public class ArrayUtil {
         return result;
     }
 
+    public static char[][] parseChar2D(String s){
+        List<String> ls = JSON.parseArray(s, String.class);
+        char[][] result = new char[ls.size()][];
+        for (int i = 0; i < ls.size(); i++) {
+            String item = ls.get(i);
+            List<Character> lo = JSON.parseArray(item, Character.class);
+            result[i] = new char[lo.size()];
+            for (int j = 0; j < lo.size(); j++) {
+                result[i][j] = lo.get(j);
+            }
+        }
+        return result;
+    }
+
+
+
     public static void printArray(int[] n){
         for(int i :n){
             System.out.print("" + i + ",");
+        }
+    }
+
+    public static void print(char[][] n){
+        System.out.println("array:");
+        for (int i = 0; i < n.length; i++) {
+            char[] a = n[i];
+            for (int j = 0; j < a.length; j++) {
+                System.out.print(a[j] + ",");
+            }
+            System.out.println();
         }
     }
 

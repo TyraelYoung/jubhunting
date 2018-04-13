@@ -12,7 +12,7 @@ public class Substring30 {
         Solution solution = new Solution();
         String[] input;
         List<Integer> result;
-        input = ArrayUtil.getString("[\"foo\", \"bar\"]");
+        input = ArrayUtil.parseString("[\"foo\", \"bar\"]");
         result = solution.findSubstring("barfoothefoobarman", input);
         assert result.get(0) == 0;
         assert result.get(1) == 9;
