@@ -1,6 +1,7 @@
 package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
+import wang.tyrael.basic.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +16,8 @@ public class ArrayUtil {
         }
         return list;
     }
+
+
 
     public static int[] parse(String s){
         List<Integer> list = JSON.parseArray(s, Integer.class);
@@ -58,6 +61,17 @@ public class ArrayUtil {
         return result;
     }
 
+    public static Point[] parsePoint(String s){
+        List<String> ls = JSON.parseArray(s, String.class);
+        Point[] result = new Point[ls.size()];
+        for (int i = 0; i < ls.size(); i++) {
+            String item = ls.get(i);
+            List<Integer> lo = JSON.parseArray(item, Integer.class);
+            result[i] = new Point(lo.get(0), lo.get(1));
+        }
+        return result;
+    }
+
     public static char[][] parseChar2D(String s){
         List<String> ls = JSON.parseArray(s, String.class);
         char[][] result = new char[ls.size()][];
@@ -76,6 +90,12 @@ public class ArrayUtil {
 
     public static void printArray(int[] n){
         for(int i :n){
+            System.out.print("" + i + ",");
+        }
+    }
+
+    public static void printPoint(List<Point> n){
+        for(Point i :n){
             System.out.print("" + i + ",");
         }
     }
