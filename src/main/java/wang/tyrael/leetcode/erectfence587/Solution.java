@@ -1,11 +1,10 @@
 package wang.tyrael.leetcode.erectfence587;
 
+
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.basic.Point;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author: wangchao
@@ -17,6 +16,9 @@ public class Solution {
         List<Point> result = new ArrayList<>();
         if(points.length ==0){
             return result;
+        }
+        if(points.length <= 3){
+            return toList(points);
         }
         if (handleX(points) > 0){
             return toList(points);
@@ -38,11 +40,16 @@ public class Solution {
     }
 
     public List<Point> handle(Point[] points){
-        List<Point> result = new ArrayList<>();
+//        List<Point> result = new ArrayList<>();
 
         List<Point> list = toList(points);
         Point start = removeStart(list);
         List<Point> sort = sortAndRemove(list, start);
+
+        System.out.println();
+        ArrayUtil.printPoint(sort);
+        System.out.println();
+
         Stack<Point> stack = new Stack<>();
         stack.push(start);
         stack.push(sort.get(0));
@@ -52,7 +59,7 @@ public class Solution {
             Point top = stack.pop();
             Point nextTop = stack.peek();
             int ca = compareAngle(top, current, nextTop);
-            while(ca >= 0){
+            while(ca < 0){
                 top = stack.pop();
                 nextTop = stack.peek();
 
@@ -63,7 +70,7 @@ public class Solution {
             stack.push(current);
 
         }
-        return result;
+        return stack;
     }
 
     /**
