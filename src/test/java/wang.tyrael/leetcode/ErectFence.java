@@ -25,6 +25,7 @@ public class ErectFence {
         result = solution.outerTrees(ArrayUtil.parsePoint("[[3,0],[4,0],[5,0]," +
                 "[6,1],[7,2],[7,3],[7,4],[6,5],[5,5],[4,5],[3,5],[2,5],[1,4]," +
                 "[1,3],[1,2],[2,1],[4,2],[0,3]]"));
+        System.out.println();
         System.out.println("[[0,3],[1,2],[2,1],[3,0],[4,0],[5,0],[6,1],[7,2],[7,3],[7,4],[6,5],[5,5],[4,5],[3,5],[2,5],[1,4]]:");
         ArrayUtil.printPoint(result);
         System.out.println();
