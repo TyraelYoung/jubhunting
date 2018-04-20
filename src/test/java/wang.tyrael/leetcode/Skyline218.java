@@ -44,4 +44,14 @@ public class Skyline218 {
         ArrayUtil.printIntArray(result);
         System.out.println();
     }
+
+    @Test
+    public void test3() {
+        Solution solution = new Solution();
+        List<int[]> result = solution.getSkyline(
+                ArrayUtil.parse2D("[[0,2,3],[2,5,3]]"));
+        System.out.println("[[0,3],[5,0]]:");
+        ArrayUtil.printIntArray(result);
+        System.out.println();
+    }
 }
