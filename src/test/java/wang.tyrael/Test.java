@@ -1,13 +1,16 @@
 package wang.tyrael;
 
-import com.google.common.collect.Multiset;
-import com.google.common.collect.TreeMultiset;
-
 import java.util.*;
 
 public class Test {
     @org.junit.Test
     public void test(){
+        Map map =new HashMap();
+        int testMap = (int) map.get("test");
+
+        String s = (String)null;
+        System.out.println("String s = (String)null:" + s);
+
         List<String> list = new ArrayList<>();
         list.add("1");
         list.add("0");

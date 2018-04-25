@@ -25,7 +25,7 @@ public class Solution {
             if(countKLeft > countLeft2){
                 endLimit1 = countLeft1 - (countKLeft - countLeft2);
             }
-            
+
             //在限制中选一个最大的数
             int max = Integer.MAX_VALUE;
             for (int j = startLimit1; j < endLimit1 +1; j++) {
