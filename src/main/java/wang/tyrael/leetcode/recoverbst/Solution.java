@@ -23,23 +23,4 @@ public class Solution {
         //中根序比较前后的值，发现第一个有问题的地方
     }
 
-    /**
-     * 返回子树的最大值最小值
-     * @param treeNode
-     * @return
-     */
-    public Pair findProblem(TreeNode treeNode){
-        if (treeNode == null) {
-            return null;
-        }
-
-        Pair pairLeft = findProblem(treeNode.left);
-        if (p1 != null){
-
-        }
-
-        Pair pairRight = findProblem(treeNode.right);
-
-
-    }
 }
