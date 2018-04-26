@@ -24,10 +24,22 @@ public class Test {
             System.out.println("hahaha:" + i);
         }
 
+        System.out.println("-1%-2: " + (-1%-2));
+        System.out.println("1%-2: " + (1%-2));
+        System.out.println("-1%2: " + (-1%2));
+
+        System.out.println("-3%-2: " + (-3%-2));
+        System.out.println("3%-2: " + (3%-2));
+        System.out.println("-3%2: " + (-3%2));
+
         System.out.println("test".substring(0, 1));
         System.out.println("test".substring(0, 0));
         System.out.println("test".substring(0, 2));
 
+        System.out.println("Integer.MIN_VALUE:" + Integer.MIN_VALUE);
+        System.out.println("Integer.MIN_VALUE:" + Integer.toBinaryString(Integer.MIN_VALUE));
+        System.out.println("Integer.MAX_VALUE:" + Integer.MAX_VALUE);
+        System.out.println("Integer.MAX_VALUE:" + Integer.toBinaryString(Integer.MAX_VALUE));
         System.out.println("Integer.MAX_VALUE +1:" + (Integer.MAX_VALUE +1));
         System.out.println("Integer.MAX_VALUE +Integer.MAX_VALUE:" + (Integer.MAX_VALUE +Integer.MAX_VALUE));
     }
