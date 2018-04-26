@@ -46,6 +46,16 @@ public class ArrayUtil {
         return result;
     }
 
+    public static List<List<Integer>> parse2DInteger(String s) {
+        List<String> ls = JSON.parseArray(s, String.class);
+        List<List<Integer>> result = new ArrayList<>();
+        for (String s1 :
+                ls) {
+            result.add(JSON.parseArray(s1, Integer.class));
+        }
+        return result;
+    }
+
     public static int[][] parse2D(String s) {
         List<String> ls = JSON.parseArray(s, String.class);
         int[][] result = new int[ls.size()][];

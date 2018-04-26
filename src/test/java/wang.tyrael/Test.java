@@ -5,8 +5,11 @@ import java.util.*;
 public class Test {
     @org.junit.Test
     public void test(){
-        Map map =new HashMap();
-        int testMap = (int) map.get("test");
+        System.out.println("'1' - '0':" + ('1' - '0'));
+
+//        Map map =new HashMap();
+//        //NullPointerException
+//        int testMap = (int) map.get("test");
 
         String s = (String)null;
         System.out.println("String s = (String)null:" + s);
