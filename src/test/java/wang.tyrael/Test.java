@@ -5,6 +5,11 @@ import java.util.*;
 public class Test {
     @org.junit.Test
     public void test(){
+        int[][] ints = new int[4][2];
+        int n=2;
+        int[][] ints2;
+        ints2 = new int[n+2][n+1];
+
         System.out.println("'1' - '0':" + ('1' - '0'));
 
 //        Map map =new HashMap();
