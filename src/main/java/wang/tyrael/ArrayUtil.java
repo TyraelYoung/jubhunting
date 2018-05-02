@@ -141,8 +141,8 @@ public class ArrayUtil {
     }
 
 
-    public static void print(List<String> list) {
-        for (String s :
+    public static void print(List list) {
+        for (Object s :
                 list) {
             System.out.print(s + ",");
         }
