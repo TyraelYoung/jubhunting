@@ -2,7 +2,6 @@ package wang.tyrael.leetcode;
 
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 //Given many words, words[i] has weight i.

@@ -33,8 +33,9 @@ public class Solution {
         RC.rHeight = rHeight;
         RC.cWidth = cWidth;
         visitedOrInQueue = new boolean[rHeight][cWidth];
-        currentHeight = grid[0][0];
+        currentHeight = 0;
         priorityQueue.add(new RC(0, 0, grid[0][0]));
+        visitedOrInQueue[0][0] = true;
         while (!priorityQueue.isEmpty()){
             RC RC = priorityQueue.poll();
             if (RC.value <= currentHeight){
@@ -63,6 +64,7 @@ public class Solution {
                 }
                 n.value = grid[n.c][n.r];
                 priorityQueue.add(n);
+                visitedOrInQueue[n.c][n.r] = true;
             }
         }
         return -1;

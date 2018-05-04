@@ -1,7 +1,6 @@
 package wang.tyrael.leetcode.range.insertinterval57;
 
 import com.alibaba.fastjson.JSON;
-import wang.tyrael.basic.Point;
 
 import java.util.ArrayList;
 import java.util.List;

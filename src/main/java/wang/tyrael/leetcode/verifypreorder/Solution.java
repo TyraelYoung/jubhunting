@@ -1,7 +1,6 @@
 package wang.tyrael.leetcode.verifypreorder;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * n0 = n2+1

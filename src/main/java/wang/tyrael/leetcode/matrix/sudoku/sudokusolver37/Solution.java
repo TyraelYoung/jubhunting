@@ -1,7 +1,5 @@
 package wang.tyrael.leetcode.matrix.sudoku.sudokusolver37;
 
-import wang.tyrael.ArrayUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 

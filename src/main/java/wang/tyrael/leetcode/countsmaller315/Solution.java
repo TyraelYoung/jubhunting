@@ -2,7 +2,6 @@ package wang.tyrael.leetcode.countsmaller315;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 public class Solution {
     int[] tree;

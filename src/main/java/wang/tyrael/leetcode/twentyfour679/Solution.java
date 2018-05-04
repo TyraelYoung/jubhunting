@@ -1,7 +1,5 @@
 package wang.tyrael.leetcode.twentyfour679;
 
-import wang.tyrael.ArrayUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
