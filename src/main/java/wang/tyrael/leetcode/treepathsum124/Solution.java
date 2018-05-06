@@ -1,5 +1,7 @@
 package wang.tyrael.leetcode.treepathsum124;
 
+import wang.tyrael.basic.TreeNode;
+
 /**
  * @author: wangchao
  */
