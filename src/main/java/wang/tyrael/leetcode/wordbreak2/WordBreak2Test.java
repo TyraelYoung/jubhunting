@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WordBreak2Test {
     public static void main(String[] args){
-        SolutionSimple solutionSimple = new SolutionSimple();
+        //SolutionSimple solutionSimple = new SolutionSimple();
         Solution solution = new Solution();
         //["cat", "cats", "and", "sand", "dog"]
         List<String> list = JSON.parseArray("[\"cat\", \"cats\", \"and\", \"sand\", \"dog\"]", String.class);

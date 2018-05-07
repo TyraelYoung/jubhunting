@@ -1,9 +1,10 @@
-package wang.tyrael.leetcode.decodeways2;
+package wang.tyrael.leetcode.array;
+
+import wang.tyrael.leetcode.decodeways2.Solution;
 
 public class DecodeWays2Test {
     public static void main(String[] args){
         Solution solution = new Solution();
-        SolutionRecursion solutionRecursion = new SolutionRecursion();
 
         int result;
 
