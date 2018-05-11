@@ -1,9 +1,9 @@
-package wang.tyrael.leetcode;
+package wang.tyrael.leetcode.stringcollection;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import wang.ArrayUtil;
-import wang.tyrael.leetcode.wordlatterII126.Solution;
+import wang.tyrael.leetcode.stringcollection.wordlatterII126.Solution;
 
 import java.util.List;
 

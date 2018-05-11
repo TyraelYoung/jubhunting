@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.wordlatterII126;
+package wang.tyrael.leetcode.stringcollection.wordlatterII126;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

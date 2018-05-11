@@ -1,6 +1,8 @@
-package wang;
+package wang.tyrael;
 
 import org.junit.Test;
+import wang.ArrayUtil;
+import wang.HeapSort;
 
 public class HeapSortTest {
     @Test

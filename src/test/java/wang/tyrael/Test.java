@@ -1,4 +1,6 @@
-package wang;
+package wang.tyrael;
+
+import wang.ArrayUtil;
 
 import java.text.StringCharacterIterator;
 import java.util.*;
@@ -6,8 +8,6 @@ import java.util.*;
 public class Test {
     @org.junit.Test
     public void test(){
-
-
         System.out.println((long)(10e9 + 7));
 
         System.out.println("'1' - '0':" + ('1' - '0'));
