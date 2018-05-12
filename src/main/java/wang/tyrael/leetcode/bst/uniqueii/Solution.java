@@ -1,6 +1,6 @@
 package wang.tyrael.leetcode.bst.uniqueii;
 
-import wang.tyrael.basic.TreeNode;
+import wang.tyrael.basic.BinaryTreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,49 +12,49 @@ import java.util.Map;
  * 2018/5/7 0007
  */
 public class Solution {
-    Map<Point, List<TreeNode>> edgeToRoot = new HashMap<>();
+    Map<Point, List<BinaryTreeNode>> edgeToRoot = new HashMap<>();
 
-    public List<TreeNode> generateTrees(int n) {
+    public List<BinaryTreeNode> generateTrees(int n) {
         return generateChild(1, n);
     }
 
-    public List<TreeNode> generateChild(int start, int end){
-        List<TreeNode> cache = edgeToRoot.get(new Point(start, end));
+    public List<BinaryTreeNode> generateChild(int start, int end){
+        List<BinaryTreeNode> cache = edgeToRoot.get(new Point(start, end));
         if (cache != null){
             return cache;
         }
-        List<TreeNode> roots = new ArrayList<>();
+        List<BinaryTreeNode> roots = new ArrayList<>();
         for (int i = start; i <= end; i++) {
-            List<TreeNode> lefts = generateChild(start, i-1);
-            List<TreeNode> rights = generateChild(i+1, end);
+            List<BinaryTreeNode> lefts = generateChild(start, i-1);
+            List<BinaryTreeNode> rights = generateChild(i+1, end);
             if (lefts.isEmpty() && rights.isEmpty()){
-                TreeNode root = new TreeNode(i);
+                BinaryTreeNode root = new BinaryTreeNode(i);
                 roots.add(root);
                 continue;
             }
             if (lefts.isEmpty()){
-                for (TreeNode right :
+                for (BinaryTreeNode right :
                         rights) {
-                    TreeNode root = new TreeNode(i);
+                    BinaryTreeNode root = new BinaryTreeNode(i);
                     root.right = right;
                     roots.add(root);
                 }
                 continue;
             }
             if (rights.isEmpty()){
-                for (TreeNode left :
+                for (BinaryTreeNode left :
                         lefts) {
-                    TreeNode root = new TreeNode(i);
+                    BinaryTreeNode root = new BinaryTreeNode(i);
                     root.left = left;
                     roots.add(root);
                 }
                 continue;
             }
-            for (TreeNode left :
+            for (BinaryTreeNode left :
                     lefts) {
-                for (TreeNode right :
+                for (BinaryTreeNode right :
                         rights) {
-                    TreeNode root = new TreeNode(i);
+                    BinaryTreeNode root = new BinaryTreeNode(i);
                     root.left = left;
                     root.right = right;
                     roots.add(root);

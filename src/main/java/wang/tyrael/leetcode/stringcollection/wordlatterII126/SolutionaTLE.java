@@ -40,7 +40,7 @@ public class SolutionaTLE {
     static class Node{
         String word;
         int index;
-//        List<Node> children;
+//        List<BinaryTreeNode> children;
         Node parent;
 
         public Node(int index) {

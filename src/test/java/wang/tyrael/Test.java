@@ -8,6 +8,9 @@ import java.util.*;
 public class Test {
     @org.junit.Test
     public void test(){
+        List<String> listEqual = new ArrayList<>();
+        listEqual.equals(new ArrayList<>());
+
         System.out.println((long)(10e9 + 7));
 
         System.out.println("'1' - '0':" + ('1' - '0'));

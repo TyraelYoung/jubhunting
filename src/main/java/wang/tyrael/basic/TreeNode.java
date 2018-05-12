@@ -1,16 +1,35 @@
 package wang.tyrael.basic;
 
-public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+import java.util.ArrayList;
+import java.util.List;
 
-    public TreeNode(int x) {
-        val = x;
+public class TreeNode {
+
+    public String word;
+    public int index;
+    //调试使用
+    public List<TreeNode> children = new ArrayList<>();
+    public TreeNode parent;
+
+    public TreeNode(int index) {
+        this.index = index;
+    }
+
+    public TreeNode(String word, int index) {
+        this.word = word;
+        this.index = index;
+    }
+
+    public TreeNode(String word, int index, TreeNode parent) {
+        this.word = word;
+        this.index = index;
+        this.parent = parent;
     }
 
     @Override
     public String toString() {
-        return "" + val;
+        return word;
     }
+
+
 }

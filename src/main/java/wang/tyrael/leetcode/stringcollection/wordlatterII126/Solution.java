@@ -1,5 +1,7 @@
 package wang.tyrael.leetcode.stringcollection.wordlatterII126;
 
+import wang.tyrael.basic.TreeNode;
+
 import java.util.*;
 
 /**
@@ -27,32 +29,13 @@ import java.util.*;
  * 构造一个图，然后深度搜索。
  */
 public class Solution {
-    static class Node {
-        String word;
-        int index;
-        //        List<Node> children;
-        Node parent;
 
-        public Node(int index) {
-            this.index = index;
-        }
-
-        public Node(String word, int index) {
-            this.word = word;
-            this.index = index;
-        }
-
-        public Node(String word, int index, Node parent) {
-            this.word = word;
-            this.index = index;
-            this.parent = parent;
-        }
-    }
 
     private List<String> wordList;
     String endWord;
 
     /**
+     * 缓存
      * 1 表示可连通
      * -1 表示不可连通
      * 0 表示没计算
@@ -66,11 +49,12 @@ public class Solution {
     /**
      * 记录路径关系
      */
-    Node startRoot;
-    Node endRoot;
+    public TreeNode startRoot;
+    public TreeNode endRoot;
 
-    Queue<Node> startQueue;
-    Queue<Node> endQueue;
+    //每个层次
+    Queue<TreeNode> startQueue;
+    Queue<TreeNode> endQueue;
 
     /**
      * 已访问节点
@@ -78,14 +62,17 @@ public class Solution {
     Set<String> startSet;
     Set<String> endSet;
 
+    Set<String> startSetThisLevel = new HashSet<>();
+    Set<String> endSetThisLevel = new HashSet<>();
+
     Set<String> meetPoint;
 
-    Map<String, List<Node>> startValueToNode;
-    Map<String, List<Node>> endValueToNode;
+    Map<String, List<TreeNode>> startValueToNode;
+    Map<String, List<TreeNode>> endValueToNode;
 
-    static Node LEVEL_END = new Node(-2);
+    static TreeNode LEVEL_END = new TreeNode(-2);
 
-    public void init() {
+    {
         endIndex = -1;
         startQueue = new LinkedList<>();
         endQueue = new LinkedList<>();
@@ -100,8 +87,8 @@ public class Solution {
     }
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-        init();
         //calculateGraph(wordList);
+        //用于缓存，防止多次比较
         graph = new int[wordList.size()][wordList.size()];
         this.endWord = endWord;
         this.wordList = wordList;
@@ -114,22 +101,28 @@ public class Solution {
             return new ArrayList<>();
         }
 
-        startRoot = new Node(beginWord, -1);
-        endRoot = new Node(endWord, endIndex);
+        startRoot = new TreeNode(beginWord, -1);
+        endRoot = new TreeNode(endWord, endIndex);
 
         initStartQueue(beginWord);
         initEndQueue(endWord);
 
+
+        int count = 0;
+        //双端bfs，每端只要一半就可以了
+        int limit = wordList.size()/2;
         if (!flagFind) {
-            while (true) {
-                boolean toContinueStart = startNextLevel();
-                if (flagFind) {
-                    break;
-                }
+            while (count < limit +1) {
+                count ++;
                 boolean toContinueEnd = endNextLevel();
                 if (flagFind) {
                     break;
                 }
+                boolean toContinueStart = startNextLevel();
+                if (flagFind) {
+                    break;
+                }
+
                 if (toContinueStart && toContinueEnd) {
 
                 } else {
@@ -137,26 +130,30 @@ public class Solution {
                 }
             }
         }
+        //System.out.println("搜索树深度：" + count);
 
+        return formatResult();
+    }
 
+    public List<List<String>> formatResult(){
         if (flagFind) {
             List<List<String>> resultFormat = new ArrayList<>();
             for (String meet : meetPoint) {
-                List<Node> meetInEnd = endValueToNode.get(meet);
-                List<Node> meetInStart = startValueToNode.get(meet);
+                List<TreeNode> meetInEnd = endValueToNode.get(meet);
+                List<TreeNode> meetInStart = startValueToNode.get(meet);
 
-                for (Node nodeInStart :
+                for (TreeNode treeNodeInStart :
                         meetInStart) {
-                    for (Node nodeInEnd :
+                    for (TreeNode treeNodeInEnd :
                             meetInEnd) {
                         List<String> item = new ArrayList<>();
 
-                        Node next = nodeInStart;
+                        TreeNode next = treeNodeInStart;
                         while (next != null) {
                             item.add(0, next.word);
                             next = next.parent;
                         }
-                        next = nodeInEnd.parent;
+                        next = treeNodeInEnd.parent;
 
                         while (next != null) {
                             item.add(next.word);
@@ -172,18 +169,16 @@ public class Solution {
         } else {
             return new ArrayList<>();
         }
-
-
     }
 
-    public void putNode(Map<String, List<Node>> map, Node node){
-        List<Node> list = map.get(node.word);
+    public void putNode(Map<String, List<TreeNode>> map, TreeNode treeNode){
+        List<TreeNode> list = map.get(treeNode.word);
         if(list == null){
             list = new ArrayList<>();
-            list.add(node);
-            map.put(node.word, list);
+            list.add(treeNode);
+            map.put(treeNode.word, list);
         }else{
-            list.add(node);
+            list.add(treeNode);
         }
     }
 
@@ -198,8 +193,9 @@ public class Solution {
             //只有一个标记节点
             return false;
         }
+        endSetThisLevel.clear();
         while (true) {
-            Node next = endQueue.poll();
+            TreeNode next = endQueue.poll();
             if (next.index == -2) {
                 //本层处理完毕
                 endQueue.add(LEVEL_END);
@@ -208,7 +204,14 @@ public class Solution {
 
             //子节点加入树，并检查是否碰头了
             for (int i = 0; i < wordList.size(); i++) {
-
+                String thisWord =  wordList.get(i);
+                if (thisWord.equals("party") || thisWord.equals("marry") || thisWord.equals("marty")){
+                    System.out.print("");
+                }
+                if(endSet.contains(thisWord) && ! endSetThisLevel.contains(thisWord)){
+                    //上面层次已经包含该单词
+                    continue;
+                }
                 int isNear = graph[next.index][i];
                 if (isNear == 0) {
                     boolean bNear = isNear(wordList.get(next.index), wordList.get(i));
@@ -223,11 +226,13 @@ public class Solution {
                 }
 
                 String child = wordList.get(i);
-                if (isNear == 1 && !endSet.contains(child)) {
-                    Node nchild = new Node(wordList.get(i), i, next);
+                if (isNear == 1 ) {
+                    TreeNode nchild = new TreeNode(wordList.get(i), i, next);
                     endQueue.add(nchild);
                     putNode(endValueToNode, nchild);
                     endSet.add(child);
+                    endSetThisLevel.add(child);
+                    next.children.add(nchild);
 
                     if (startSet.contains(child)) {
                         flagFind = true;
@@ -247,10 +252,11 @@ public class Solution {
         for (int i = 0; i < wordList.size(); i++) {
             String b = wordList.get(i);
             if (isNear(beginWord, b)) {
-                Node node = new Node(b, i, startRoot);
-                startQueue.add(node);
+                TreeNode treeNode = new TreeNode(b, i, startRoot);
+                startRoot.children.add(treeNode);
+                startQueue.add(treeNode);
                 startSet.add(b);
-                putNode(startValueToNode, node);
+                putNode(startValueToNode, treeNode);
             }
         }
         startQueue.add(LEVEL_END);
@@ -274,12 +280,14 @@ public class Solution {
      * @return
      */
     boolean startNextLevel() {
+
         if (startQueue.size() == 1) {
             //只有一个标记节点
             return false;
         }
+        startSetThisLevel.clear();
         while (true) {
-            Node next = startQueue.poll();
+            TreeNode next = startQueue.poll();
             if (next.index == -2) {
                 //本层处理完毕
                 startQueue.add(LEVEL_END);
@@ -288,7 +296,11 @@ public class Solution {
 
             //子节点加入树，并检查是否碰头了
             for (int i = 0; i < wordList.size(); i++) {
-
+                String thisWord =  wordList.get(i);
+                if(startSet.contains(thisWord) && !startSetThisLevel.contains(thisWord)){
+                    //上面层次已经包含该单词
+                    continue;
+                }
                 int isNear = graph[next.index][i];
                 if (isNear == 0) {
                     boolean bNear = isNear(wordList.get(next.index), wordList.get(i));
@@ -302,11 +314,13 @@ public class Solution {
                     isNear = graph[next.index][i];
                 }
                 String child = wordList.get(i);
-                if (isNear == 1 && !isInPath(next, i)) {
-                    Node nchild = new Node(wordList.get(i), i, next);
+                if (isNear == 1 ) {
+                    TreeNode nchild = new TreeNode(wordList.get(i), i, next);
                     startQueue.add(nchild);
                     putNode(startValueToNode, nchild);
                     startSet.add(child);
+                    startSetThisLevel.add(child);
+                    next.children.add(nchild);
 
                     if (endSet.contains(child)) {
                         flagFind = true;
@@ -321,7 +335,7 @@ public class Solution {
         }
      }
 
-    public boolean isInPath(Node parent, int index){
+    public boolean isInPath(TreeNode parent, int index){
         while(parent != null){
             if(parent.index == index){
                 return true;
@@ -332,6 +346,10 @@ public class Solution {
     }
 
 
+    /**
+     * 提前计算是否相邻
+     * @param wordList
+     */
     public void calculateGraph(List<String> wordList) {
         graph = new int[wordList.size()][wordList.size()];
         for (int i = 0; i < wordList.size(); i++) {
@@ -386,3 +404,5 @@ public class Solution {
         return true;
     }
 }
+
+
