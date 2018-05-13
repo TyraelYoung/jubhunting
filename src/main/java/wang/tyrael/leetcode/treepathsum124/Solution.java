@@ -1,6 +1,6 @@
 package wang.tyrael.leetcode.treepathsum124;
 
-import wang.tyrael.basic.BinaryTreeNode;
+import wang.tyrael.basic.binarytree.TreeNode;
 
 /**
  * @author: wangchao
@@ -8,16 +8,16 @@ import wang.tyrael.basic.BinaryTreeNode;
 public class Solution {
 /**
  * Definition for a binary tree node.
- * public class BinaryTreeNode {
+ * public class TreeNode {
  *     int val;
- *     BinaryTreeNode left;
- *     BinaryTreeNode right;
- *     BinaryTreeNode(int x) { val = x; }
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
  * }
  */
 
     int max = Integer.MIN_VALUE;
-    public int maxPathSum(BinaryTreeNode root) {
+    public int maxPathSum(TreeNode root) {
         halfPath(root);
         return max;
     }
@@ -28,7 +28,7 @@ public class Solution {
      * @param root
      * @return
      */
-    public int halfPath(BinaryTreeNode root){
+    public int halfPath(TreeNode root){
         int left  = 0;
         int right = 0;
         if(root.left != null){

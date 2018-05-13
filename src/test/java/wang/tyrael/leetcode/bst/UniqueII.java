@@ -1,8 +1,8 @@
 package wang.tyrael.leetcode.bst;
 
 import org.junit.Test;
-import wang.tyrael.basic.BinaryTreeNode;
-import wang.tyrael.basic.BinaryTreeNodeStatic;
+import wang.tyrael.basic.binarytree.TreeNode;
+import wang.tyrael.basic.binarytree.BinaryTreeNodeStatic;
 import wang.tyrael.leetcode.bst.uniqueii.Solution;
 
 import java.util.List;
@@ -15,21 +15,21 @@ public class UniqueII {
     @Test
     public void test(){
         Solution solution = new Solution();
-        List<BinaryTreeNode> binaryTreeNodeList = solution.generateTrees(3);
-        BinaryTreeNodeStatic.print(binaryTreeNodeList);
+        List<TreeNode> treeNodeList = solution.generateTrees(3);
+        BinaryTreeNodeStatic.print(treeNodeList);
     }
 
     @Test
     public void test0(){
         Solution solution = new Solution();
-        List<BinaryTreeNode> binaryTreeNodeList = solution.generateTrees(0);
-        BinaryTreeNodeStatic.print(binaryTreeNodeList);
+        List<TreeNode> treeNodeList = solution.generateTrees(0);
+        BinaryTreeNodeStatic.print(treeNodeList);
     }
 
     @Test
     public void test1(){
         Solution solution = new Solution();
-        List<BinaryTreeNode> binaryTreeNodeList = solution.generateTrees(1);
-        BinaryTreeNodeStatic.print(binaryTreeNodeList);
+        List<TreeNode> treeNodeList = solution.generateTrees(1);
+        BinaryTreeNodeStatic.print(treeNodeList);
     }
 }

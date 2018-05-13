@@ -1,4 +1,7 @@
-package wang.tyrael.basic;
+package wang.tyrael.basic.binarytree;
+
+import sun.reflect.generics.tree.Tree;
+import wang.ArrayUtil;
 
 import java.util.List;
 
@@ -7,20 +10,25 @@ import java.util.List;
  * 2018/5/7 0007
  */
 public class BinaryTreeNodeStatic {
-    public static void print(List<BinaryTreeNode> roots){
+    public static TreeNode construct(String src){
+        int[] iSrc = ArrayUtil.parse(src);
+        return null;
+    }
+
+    public static void print(List<TreeNode> roots){
         System.out.print("总数：" + roots.size());
-        for (BinaryTreeNode root :
+        for (TreeNode root :
                 roots) {
             System.out.println("树:");
             BinaryTreeNodeStatic.print(root);
         }
     }
 
-    public static void print(BinaryTreeNode root){
+    public static void print(TreeNode root){
         print(root, 0);
     }
 
-    private static void print(BinaryTreeNode root, int level){
+    private static void print(TreeNode root, int level){
         if (root == null){
             return;
         }
