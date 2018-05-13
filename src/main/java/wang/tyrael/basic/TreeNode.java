@@ -26,6 +26,11 @@ public class TreeNode {
         this.parent = parent;
     }
 
+    public TreeNode(String child, TreeNode next) {
+        this.word = child;
+        this.parent = next;
+    }
+
     @Override
     public String toString() {
         return word;

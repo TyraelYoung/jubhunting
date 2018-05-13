@@ -1,5 +1,7 @@
 package wang.tyrael.leetcode.stringcollection.wordlatterII126;
 
+import wang.tyrael.basic.TreeNode;
+
 import java.util.*;
 
 /**
@@ -26,13 +28,21 @@ import java.util.*;
 /**
  * 构造一个图，然后深度搜索。
  */
-public class Solution {
+public class Solution3500 {
     public static long timeIsNear = 0;
     public static long timeIsNearCompare = 0;
 
-    private Set<String> wordSet;
+
+    private List<String> wordList;
     String endWord;
 
+    /**
+     * 缓存
+     * 1 表示可连通
+     * -1 表示不可连通
+     * 0 表示没计算
+     */
+    int[][] graph;
     int endIndex = -1;
     //队列辅助，实现按层访问，宽度搜索
 
@@ -56,6 +66,8 @@ public class Solution {
     Set<String> startSet;
     Set<String> endSet;
 
+    Set<String> startSetThisLevel = new HashSet<>();
+    Set<String> endSetThisLevel = new HashSet<>();
     Set<String> seenThisLevel = new HashSet<>();
 
     Set<String> meetPoint;
@@ -80,11 +92,17 @@ public class Solution {
     }
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        //calculateGraph(wordList);
         //用于缓存，防止多次比较
-        wordSet = new HashSet<>();
-        wordSet.addAll(wordList);
+        graph = new int[wordList.size()][wordList.size()];
         this.endWord = endWord;
-        if (!wordSet.contains(endWord)){
+        this.wordList = wordList;
+        for (int i = 0; i < wordList.size(); i++) {
+            if (endWord.equals(wordList.get(i))) {
+                endIndex = i;
+            }
+        }
+        if (endIndex == -1) {
             return new ArrayList<>();
         }
 
@@ -94,6 +112,7 @@ public class Solution {
         initStartQueue(beginWord);
         initEndQueue(endWord);
 
+
         countLevel = 0;
         //双端bfs，每端只要一半就可以了
         int limit = wordList.size()/2;
@@ -101,15 +120,14 @@ public class Solution {
             //long startWhile = System.currentTimeMillis();
             while (countLevel < limit +1) {
                 countLevel ++;
-                boolean toContinueStart = oneEndOneLevel(startQueue, startSet, startValueToNode, endSet, meetPoint);
-                if (flagFind) {
-                    break;
-                }
                 boolean toContinueEnd = oneEndOneLevel(endQueue, endSet, endValueToNode, startSet, meetPoint);
                 if (flagFind) {
                     break;
                 }
-
+                boolean toContinueStart = oneEndOneLevel(startQueue, startSet, startValueToNode, endSet, meetPoint);
+                if (flagFind) {
+                    break;
+                }
 
                 if (toContinueStart && toContinueEnd) {
 
@@ -173,7 +191,16 @@ public class Solution {
     }
 
     void initStartQueue(String beginWord) {
-        startQueue.add(startRoot);
+        for (int i = 0; i < wordList.size(); i++) {
+            String b = wordList.get(i);
+            if (isNear(beginWord, b)) {
+                TreeNode treeNode = new TreeNode(b, i, startRoot);
+                startRoot.children.add(treeNode);
+                startQueue.add(treeNode);
+                startSet.add(b);
+                putNode(startValueToNode, treeNode);
+            }
+        }
         startQueue.add(LEVEL_END);
     }
 
@@ -210,79 +237,128 @@ public class Solution {
             }
 
             //子节点加入树，并检查是否碰头了
-            //当前单词的变种是否在集合中
-            String parent = next.word;
-
-            for (int i = 0; i < parent.length(); i++) {
-                StringBuilder sbParent = new StringBuilder(parent);
-                for (char j = 'a'; j <= 'z' ; j++) {
-                    if (j == sbParent.charAt(i)){
-
-                    }else{
-                        sbParent.setCharAt(i, j);
-                        String child = sbParent.toString();
-                        if (seen.contains(child)){
-                            //上面层次已经包含该单词
-                            continue;
-                        }
-                        if (!wordSet.contains(child)){
-                            continue;
-                        }
-                        //符合要求的变种
-                        TreeNode nchild = new TreeNode(child, next);
-                        queue.add(nchild);
-                        putNode(valueToNode, nchild);
-                        seenThisLevel.add(child);
-                        next.children.add(nchild);
-
-                        if (other.contains(child)) {
-                            flagFind = true;
-                            meetPoint.add(child);
-                        }
-                    }
+            //查找每一个单词，是否是当前单词的变种
+            for (int i = 0; i < wordList.size(); i++) {
+                String thisWord =  wordList.get(i);
+                if(seen.contains(thisWord)){
+                    //上面层次已经包含该单词
+                    continue;
                 }
-            }
+                int isNear = isNear(next.index, i);
+                if (isNear == 1 ) {
+                    TreeNode nchild = new TreeNode(thisWord, i, next);
+                    queue.add(nchild);
+                    putNode(valueToNode, nchild);
+                    seenThisLevel.add(thisWord);
+                    next.children.add(nchild);
 
+                    if (other.contains(thisWord)) {
+                        flagFind = true;
+                        meetPoint.add(thisWord);
+                    }
+
+                }
+//                else {
+//                    //不相邻，查看下一个节点
+//                }
+
+            }
         }
      }
 
+    public boolean isInPath(TreeNode parent, int index){
+        while(parent != null){
+            if(parent.index == index){
+                return true;
+            }
+            parent = parent.parent;
+        }
+        return false;
+    }
+
+
+    /**
+     * 提前计算是否相邻
+     * @param wordList
+     */
+    public void calculateGraph(List<String> wordList) {
+        graph = new int[wordList.size()][wordList.size()];
+        for (int i = 0; i < wordList.size(); i++) {
+            String a = wordList.get(i);
+            for (int j = i + 1; j < wordList.size(); j++) {
+                String b = wordList.get(j);
+                if (isNear(a, b)) {
+                    graph[i][j] = 1;
+                    graph[j][i] = 1;
+                } else {
+                    graph[i][j] = -1;
+                    graph[j][i] = -1;
+                }
+            }
+        }
+    }
+
+    public void printGraph() {
+//        for (int i = 0; i < graph.length; i++) {
+//            System.out.println();
+//            int[] item = graph[i];
+//            for (int j = 0; j < item.length; j++) {
+//                System.out.print(" " + item[j]);
+//            }
+//        }
+    }
+
+    public int isNear(int a, int b){
+        long start = System.currentTimeMillis();
+        int isNear = graph[a][b];
+        if (isNear == 0) {
+            boolean bNear = isNear(wordList.get(a), wordList.get(b));
+            if (bNear) {
+                graph[a][b] = 1;
+                graph[b][a] = 1;
+            } else {
+                graph[a][b] = -1;
+                graph[b][a] = -1;
+            }
+            isNear = graph[a][b];
+        }
+//        int isNear = isNear(wordList.get(a), wordList.get(b))?1:-1;
+        long end = System.currentTimeMillis();
+        timeIsNear = timeIsNear + (end - start);
+        return isNear;
+    }
+
+    /**
+     * 不包含相同的
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public boolean isNear(String a, String b) {
+        long start = System.currentTimeMillis();
+        boolean result = true;
+        int countDiff = 0;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) == b.charAt(i)) {
+
+            } else {
+                countDiff++;
+            }
+            if (countDiff > 1) {
+                result =false;
+                break;
+            }
+        }
+        if (countDiff == 0) {
+//            throw new RuntimeException("字符串相同");
+            result = false;
+        }
+        //==1
+        long end = System.currentTimeMillis();
+        timeIsNearCompare = timeIsNearCompare + (end -start);
+        return result;
+    }
 }
-
-class TreeNode {
-
-    public String word;
-    public int index;
-    //调试使用
-    public List<TreeNode> children = new ArrayList<>();
-    public TreeNode parent;
-
-    public TreeNode(int index) {
-        this.index = index;
-    }
-
-    public TreeNode(String word, int index) {
-        this.word = word;
-        this.index = index;
-    }
-
-    public TreeNode(String word, int index, TreeNode parent) {
-        this.word = word;
-        this.index = index;
-        this.parent = parent;
-    }
-
-    public TreeNode(String child, TreeNode next) {
-        this.word = child;
-        this.parent = next;
-    }
-
-    @Override
-    public String toString() {
-        return word;
-    }
-
-
-}
-
 
 
