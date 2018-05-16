@@ -1,4 +1,4 @@
-package wang.tyrael.basic;
+package wang.tyrael.basic.disjointset;
 
 /**
  * @author: wangchao
