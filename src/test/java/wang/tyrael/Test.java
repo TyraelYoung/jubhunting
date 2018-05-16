@@ -1,11 +1,20 @@
 package wang.tyrael;
 
+import com.alibaba.fastjson.JSON;
 import wang.ArrayUtil;
 
-import java.text.StringCharacterIterator;
 import java.util.*;
 
 public class Test {
+    @org.junit.Test
+    public void testStream(){
+        List<Integer> statusList = JSON.parseArray( "[201,203,204]", Integer.class);
+        long countComplete = statusList.stream().filter(status -> status == 204).count();
+        boolean existComplete = statusList.stream().anyMatch(status->status == 204);
+        assert countComplete == 1;
+        assert existComplete;
+    }
+
     @org.junit.Test
     public void test(){
         List<String> listEqual = new ArrayList<>();
@@ -18,6 +27,11 @@ public class Test {
 //        Map map =new HashMap();
 //        //NullPointerException
 //        int testMap = (int) map.get("test");
+
+        Map map =new HashMap();
+        //NullPointerException
+        String testMapString = (String) map.get("test");
+        System.out.println("testMapString:" + testMapString);
 
         String s = (String)null;
         System.out.println("String s = (String)null:" + s);
