@@ -2,10 +2,28 @@ package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
 import wang.ArrayUtil;
+import wang.tyrael.leetcode.TestStatic;
 
 import java.util.*;
 
 public class Test {
+    @org.junit.Test
+    public void testSwitch(){
+        String s = null;
+        switch (s){
+            case "a":
+                break;
+        }
+    }
+
+    @org.junit.Test
+    public void testLeft(){
+        int a = 'a' - 'a';
+        int b = 1<<a;
+        int result = 0 | b;
+        TestStatic.printlnResult(result);
+    }
+
     @org.junit.Test
     public void testStream(){
         List<Integer> statusList = JSON.parseArray( "[201,203,204]", Integer.class);
