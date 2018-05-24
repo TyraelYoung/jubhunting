@@ -312,7 +312,7 @@ public class WordLatterII126 {
         print(result);
     }
 
-//    @Test
+//    @JavaTest
 //    public void testIsNear() {
 //        Solution s = new Solution();
 //        boolean result = s.isNear("hot", "dot");

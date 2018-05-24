@@ -52,7 +52,7 @@ public class RecurringDecimal166 {
         assert "0.(6)".equals(result);
     }
 
-//    @Test
+//    @JavaTest
 //    public void test6(){
 //        Solution solution = new Solution();
 //        String result = solution.fractionToDecimal(Integer.MAX_VALUE-1, Integer.MAX_VALUE);

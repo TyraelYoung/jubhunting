@@ -4,7 +4,7 @@ import org.junit.Test;
 //import wang.tyrael.leetcode.string.palindrome.partitioningii.Solution;
 
 public class PartitioningII132 {
-//    @Test
+//    @JavaTest
     public void test(){
 //        Solution solution = new Solution();
 //        int result  = solution.minCut("aab");
@@ -28,7 +28,7 @@ public class PartitioningII132 {
 //        assert result == 2;
     }
 
-//    @Test
+//    @JavaTest
 //    public void test3(){
 //        Solution solution = new Solution();
 //        int result  = solution.minCut("a");
@@ -36,14 +36,14 @@ public class PartitioningII132 {
 //        assert result == 0;
 //    }
 //
-//    @Test
+//    @JavaTest
 //    public void test4(){
 //        Solution solution = new Solution();
 //        int result  = solution.minCut("apjesgpsxoeiokmqmfgvjslcjukbqxpsobyhjpbgdfruqdkeiszrlmtwgfxyfostpqczidfljwfbbrflkgdvtytbgqalguewnhvvmcgxboycffopmtmhtfizxkmeftcucxpobxmelmjtuzigsxnncxpaibgpuijwhankxbplpyejxmrrjgeoevqozwdtgospohznkoyzocjlracchjqnggbfeebmuvbicbvmpuleywrpzwsihivnrwtxcukwplgtobhgxukwrdlszfaiqxwjvrgxnsveedxseeyeykarqnjrtlaliyudpacctzizcftjlunlgnfwcqqxcqikocqffsjyurzwysfjmswvhbrmshjuzsgpwyubtfbnwajuvrfhlccvfwhxfqthkcwhatktymgxostjlztwdxritygbrbibdgkezvzajizxasjnrcjwzdfvdnwwqeyumkamhzoqhnqjfzwzbixclcxqrtniznemxeahfozp");
 //        System.out.println("result:" + result);
 ////        assert result == 4;
 //    }
-//    @Test
+//    @JavaTest
 //    public void test5(){
 //        Solution solution = new Solution();
 //        int result  = solution.minCut("coder");

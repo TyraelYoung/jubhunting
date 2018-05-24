@@ -1,12 +1,39 @@
 package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.TreeRangeMap;
+import com.google.common.collect.TreeRangeSet;
 import wang.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
+import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ScheduledExecutorService;
 
-public class Test {
+public class JavaTest {
+    @Test
+    public void testTmp(){
+
+
+//        ScheduledExecutorService;
+        TreeMap treeMap = new TreeMap();
+//        treeMap.ceilingKey();
+//        treeMap.floorKey();
+//        TreeRangeMap;
+//        TreeRangeSet
+    }
+
+    @Test
+    public void testCalendar(){
+        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date zero = calendar.getTime();
+        System.out.println(calendar.getTimeInMillis());
+    }
+
     @org.junit.Test
     public void testSwitch(){
         String s = null;
