@@ -24,6 +24,13 @@ public class JavaTest {
     }
 
     @Test
+    public void testMap(){
+        Map<String, String> map = new HashMap<>();
+//        map.putAll(null);
+    }
+
+
+    @Test
     public void testCalendar(){
         Calendar calendar = Calendar.getInstance();
 //        calendar.setTime(new Date());
