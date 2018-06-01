@@ -6,14 +6,17 @@ package wang.tyrael.leetcode.string.reversewords151;
  */
 public class Solution {
     public String reverseWords(String s) {
+        //判空
         if (s == null){
             return null;
         }
         if (s.length() == 0){
             return "";
         }
+        //整体反转
         char[] letters = s.toCharArray();
         reverse(0, letters.length-1, letters);
+        //逐个单词反转
         int start = -1, end =-1;
         while(end < letters.length-1){
             start = end+1;
@@ -30,6 +33,7 @@ public class Solution {
         }
         //去除多余的0
         boolean flagHasSpace = true;
+        //当前可以空余的位置
         int endIndex = 0;
         for (int i = 0; i < letters.length; i++) {
             if (letters[i] == ' '){
@@ -60,7 +64,7 @@ public class Solution {
      * @return
      */
     private void reverse(int start, int end, char[] letters){
-        for (int i = 0; i < (end -start) /2; i++) {
+        for (int i = 0; i <= (end -start) /2; i++) {
             char tmp = letters[start + i];
             letters[start + i] = letters[end-i];
             letters[end-i] = tmp;
