@@ -7,12 +7,17 @@ import wang.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class JavaTest {
     @Test
     public void testTmp(){
+        int a = Integer.parseInt("");
+        System.out.println(a);
+        boolean b = Boolean.parseBoolean("");
+        System.out.println(b);
 
 
 //        ScheduledExecutorService;
