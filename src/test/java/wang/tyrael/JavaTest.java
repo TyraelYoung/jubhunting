@@ -3,6 +3,7 @@ package wang.tyrael;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.collect.TreeRangeSet;
+import com.google.common.math.IntMath;
 import wang.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import org.junit.Test;
@@ -12,6 +13,13 @@ import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class JavaTest {
+    @Test
+    public void testLong(){
+        Long a  = 0L;
+        //!!!
+        System.out.println(a.equals(0));
+    }
+
     @Test
     public void testTmp(){
         int a = Integer.parseInt("");

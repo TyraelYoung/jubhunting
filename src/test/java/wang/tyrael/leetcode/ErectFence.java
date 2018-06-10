@@ -3,7 +3,7 @@ package wang.tyrael.leetcode;
 import org.junit.Test;
 import wang.tyrael.leetcode.erectfence587.Solution;
 import wang.ArrayUtil;
-import wang.tyrael.basic.Point;
+import wang.tyrael.basic.geometry.Point;
 
 import java.util.List;
 

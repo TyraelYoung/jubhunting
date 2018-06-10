@@ -1,4 +1,4 @@
-package wang.tyrael.basic;
+package wang.tyrael.basic.string;
 
 public class PalindromeStatic {
     public static boolean isPalindrome(String s){

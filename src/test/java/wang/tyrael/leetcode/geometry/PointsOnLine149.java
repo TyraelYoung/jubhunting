@@ -2,13 +2,10 @@ package wang.tyrael.leetcode.geometry;
 
 import org.junit.Test;
 import wang.ArrayUtil;
-import wang.tyrael.basic.Point;
-import wang.tyrael.leetcode.TestStatic;
 import wang.tyrael.leetcode.TestTask;
 
+import wang.tyrael.leetcode.geometry.pointsonaline.Point;
 import wang.tyrael.leetcode.geometry.pointsonaline.Solution;
-
-import java.util.ArrayList;
 
 /**
  * @author: wangchao
@@ -40,13 +37,52 @@ public class PointsOnLine149 {
     @Test
     public void test3(){
         new TestTask(new Solution(), "maxPoints",
-                new Object[]{ArrayUtil.parsePoint("[[1,1],[2,2],[3,3]]")}, 3).run();
+                new Object[]{Point.parsePoint("[[1,1],[2,2],[3,3]]")}, 3).run();
     }
 
     @Test
     public void test4(){
         new TestTask(new Solution(), "maxPoints",
-                new Object[]{ArrayUtil.parsePoint("[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]")},
+                new Object[]{Point.parsePoint("[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]")},
                 4).run();
+    }
+
+    //[[0,0],[94911151,94911150],[94911152,94911151]]
+    @Test
+    public void test5(){
+        new TestTask(new Solution(), "maxPoints",
+                new Object[]{Point.parsePoint("[[0,0],[94911151,94911150],[94911152,94911151]]")},
+                2).run();
+    }
+
+    //[[0,0],[94911151,94911150],[94911152,94911151]]
+    @Test
+    public void test6(){
+        new TestTask(new Solution(), "maxPoints",
+                new Object[]{Point.parsePoint("[[0,0],[0,0]]")},
+                2).run();
+    }
+
+    @Test
+    public void test7(){
+        new TestTask(new Solution(), "maxPoints",
+                new Object[]{Point.parsePoint("[[0,0]]")},
+                1).run();
+    }
+
+    //[[4,0],[4,-1],[4,5]]
+    @Test
+    public void test8(){
+        new TestTask(new Solution(), "maxPoints",
+                new Object[]{Point.parsePoint("[[4,0],[4,-1],[4,5]]")},
+                3).run();
+    }
+
+    //[[1,1],[1,1],[1,1]]
+    @Test
+    public void test9(){
+        new TestTask(new Solution(), "maxPoints",
+                new Object[]{Point.parsePoint("[[1,1],[1,1],[1,1]]")},
+                3).run();
     }
 }

@@ -1,7 +1,7 @@
 package wang;
 
 import com.alibaba.fastjson.JSON;
-import wang.tyrael.basic.Point;
+import wang.tyrael.basic.geometry.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;

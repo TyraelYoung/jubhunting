@@ -1,4 +1,6 @@
-package wang.tyrael.basic;
+package wang.tyrael.leetcode.geometry.pointsonaline;
+
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,17 @@ import java.util.List;
  * 2018/4/17 0017
  */
 public class Point {
+    public static Point[] parsePoint(String s) {
+        List<String> ls = JSON.parseArray(s, String.class);
+        Point[] result = new Point[ls.size()];
+        for (int i = 0; i < ls.size(); i++) {
+            String item = ls.get(i);
+            List<Integer> lo = JSON.parseArray(item, Integer.class);
+            result[i] = new Point(lo.get(0), lo.get(1));
+        }
+        return result;
+    }
+
     public static List<Point> toList(Point[] points){
         List<Point> list = new ArrayList<>();
         for (Point p :
@@ -16,7 +29,6 @@ public class Point {
         }
         return list;
     }
-
 
     public int x;
     public int y;
