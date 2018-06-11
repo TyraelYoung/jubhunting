@@ -33,4 +33,43 @@ public class ContainsDuplicate3 {
         new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
                 new Object[]{ArrayUtil.parse("[1,5,9,1,5,9]"), 2, 3}, false).run();
     }
+
+    @Test
+    public void test4(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[]"), 2, 3}, false).run();
+    }
+
+    @Test
+    public void test5(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[1,2,3,1]"), 0, 0}, false).run();
+    }
+
+    @Test
+    public void test6(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[1,1]"), 1, 0}, true).run();
+    }
+
+    @Test
+    public void test7(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[1,1]"), 0, 0}, false).run();
+    }
+
+    @Test
+    public void test8(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[1]"), 0, 0}, false).run();
+    }
+
+//    [-1,2147483647]
+//            1
+//            2147483647
+    @Test
+    public void test9(){
+        new TestTask(new Solution(), "containsNearbyAlmostDuplicate",
+                new Object[]{ArrayUtil.parse("[-1, 2147483647]"), 1, 2147483647}, false).run();
+    }
 }

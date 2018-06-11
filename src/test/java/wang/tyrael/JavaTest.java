@@ -123,11 +123,25 @@ public class JavaTest {
         System.out.println("test".substring(0, 0));
         System.out.println("test".substring(0, 2));
 
+    }
+
+    @Test
+    public void testInt(){
+        System.out.println("Integer.MAX_VALUE - Integer.MIN_VALUE:" + (Integer.MAX_VALUE - Integer.MIN_VALUE));
+
+        System.out.println("2 * Integer.MAX_VALUE:" + 2*Integer.MAX_VALUE);
+        System.out.println("2 * Integer.MIN_VALUE:" + 2*Integer.MIN_VALUE);
+
         System.out.println("Integer.MIN_VALUE:" + Integer.MIN_VALUE);
         System.out.println("Integer.MIN_VALUE:" + Integer.toBinaryString(Integer.MIN_VALUE));
+        System.out.println("Integer.MIN_VALUE:" + Integer.toHexString(Integer.MIN_VALUE));
         System.out.println("Integer.MAX_VALUE:" + Integer.MAX_VALUE);
         System.out.println("Integer.MAX_VALUE:" + Integer.toBinaryString(Integer.MAX_VALUE));
+        System.out.println("Integer.MAX_VALUE:" + Integer.toHexString(Integer.MAX_VALUE));
+        System.out.println("-1:" + Integer.toBinaryString(-1));
+        System.out.println("-1:" + Integer.toHexString(-1));
         System.out.println("Integer.MAX_VALUE +1:" + (Integer.MAX_VALUE +1));
         System.out.println("Integer.MAX_VALUE +Integer.MAX_VALUE:" + (Integer.MAX_VALUE +Integer.MAX_VALUE));
+
     }
 }

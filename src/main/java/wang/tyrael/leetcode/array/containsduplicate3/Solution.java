@@ -25,10 +25,9 @@ public class Solution {
 //    Input: nums = [1,5,9,1,5,9], k = 2, t = 3
 //    Output: false
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        Window window = new Window(k,t);
+        Window window = new Window(k+1,t);
         for (int i = 0; i < nums.length; i++) {
-            window.move(nums[i]);
-            if (window.isDupilcate()){
+            if (window.checkAndMove(nums[i])){
                 return true;
             }
         }
@@ -36,7 +35,7 @@ public class Solution {
     }
 
     public class Node implements Comparable<Node>{
-        final int value;
+        final long value;
 
         public Node(int value) {
             this.value = value;
@@ -44,7 +43,9 @@ public class Solution {
 
         @Override
         public int compareTo(Node o) {
-            return value - o.value;
+            long diff = value - o.value;
+            if (diff == 0) return 0;
+            return diff<0?-1:1;
         }
     }
 
@@ -61,24 +62,34 @@ public class Solution {
             this.duplicateThreshold = duplicateThreshold;
         }
 
-        public void move(int value){
+        public boolean checkAndMove(int value){
             if (size == capacity){
                 Node out = queue.remove();
                 treeSet.remove(out);
+            }else {
+                size++;
             }
+            boolean isDuplicate = isDupilcate(value);
             Node in = new Node(value);
             queue.add(in);
             treeSet.add(in);
+            return isDuplicate;
         }
 
-        public boolean isDupilcate(){
-            Node minNode = treeSet.first(),
-                    maxNode = treeSet.last();
-            treeSet.pollLast()
-            if (minNode == maxNode){
-                return false
+        public boolean isDupilcate(int value){
+            if(size <=0){
+                return false;
             }
-            return minNode.value - maxNode.value <= duplicateThreshold;
+
+            Node lowNode = treeSet.floor(new Node(value));
+            if (lowNode != null && value - lowNode.value <= duplicateThreshold){
+                return true;
+            }
+            Node highNode = treeSet.ceiling(new Node(value));
+            if (highNode != null && highNode.value - value <= duplicateThreshold){
+                return true;
+            }
+            return false;
         }
     }
 }
