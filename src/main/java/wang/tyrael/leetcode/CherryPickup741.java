@@ -28,7 +28,7 @@ import java.util.List;
 //        Note:
 //
 //        grid is an N by N 2D array, with 1 <= N <= 50.
-//        Each grid[i][j] is an integer in the set {-1, 0, 1}.
+//        Each grid[i][j] is an integer move the set {-1, 0, 1}.
 //        It is guaranteed that grid[0][0] and grid[N-1][N-1] are not -1
 public class CherryPickup741 {
     public static void main(String[] args){

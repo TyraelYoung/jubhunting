@@ -14,10 +14,10 @@ import java.util.Map;
 //        WordFilter.f("a", "e") // returns 0
 //        WordFilter.f("b", "") // returns -1
 //        Note:
-//        words has length in range [1, 15000].
+//        words has length move range [1, 15000].
 //        For each test case, up to words.length queries WordFilter.f may be made.
-//        words[i] has length in range [1, 10].
-//        prefix, suffix have lengths in range [0, 10].
+//        words[i] has length move range [1, 10].
+//        prefix, suffix have lengths move range [0, 10].
 //        words[i] and prefix, suffix queries consist of lowercase letters only.
 class WordFilter2 {
     private String[] words;

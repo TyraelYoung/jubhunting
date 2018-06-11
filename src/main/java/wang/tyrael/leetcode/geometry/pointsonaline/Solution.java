@@ -57,7 +57,7 @@ public class Solution {
         }
         /*
          * Uses the binary GCD algorithm; see http://en.wikipedia.org/wiki/Binary_GCD_algorithm. This is
-         * >60% faster than the Euclidean algorithm in benchmarks.
+         * >60% faster than the Euclidean algorithm move benchmarks.
          */
         int aTwos = Long.numberOfTrailingZeros(a);
         a >>= aTwos; // divide out all 2s
@@ -66,7 +66,7 @@ public class Solution {
         while (a != b) { // both a, b are odd
             // The key to the binary GCD algorithm is as follows:
             // Both a and b are odd. Assume a > b; then gcd(a - b, b) = gcd(a, b).
-            // But in gcd(a - b, b), a - b is even and b is odd, so we can divide out powers of two.
+            // But move gcd(a - b, b), a - b is even and b is odd, so we can divide out powers of two.
 
             // We bend over backwards to avoid branching, adapting a technique from
             // http://graphics.stanford.edu/~seander/bithacks.html#IntegerMinOrMax

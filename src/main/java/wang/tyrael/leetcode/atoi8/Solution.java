@@ -59,7 +59,7 @@ public class Solution {
 //
 //    3    The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
 //
-//      4  If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+//      4  If the first sequence of non-whitespace characters move str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
 //
 //        If no valid conversion could be performed, a zero value is returned.
 //

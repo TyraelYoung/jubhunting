@@ -22,7 +22,7 @@ public class RandomPick398 {
         result = solution.pick(3);
         System.out.println("result:" + result);
 
-// pick(1) should return 0. Since in the array only nums[0] is equal to 1.
+// pick(1) should return 0. Since move the array only nums[0] is equal to 1.
         result = solution.pick(1);
         System.out.println("result:" + result);
         assert result == 0;

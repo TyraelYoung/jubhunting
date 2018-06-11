@@ -1,10 +1,7 @@
 package wang.tyrael.leetcode;
 
-import wang.tyrael.leetcode.geometry.pointsonaline.Solution;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * @author: wangchao
@@ -32,7 +29,25 @@ public class TestTask implements Runnable{
     public void run() {
         Class[] parameterTypes = new Class[params.length];
         for (int i = 0; i < params.length; i++) {
-            parameterTypes[i] = params[i].getClass();
+            if(params[i] instanceof Integer){
+                parameterTypes[i] = Integer.TYPE;
+            }else if(params[i] instanceof Byte){
+                parameterTypes[i] = Byte.TYPE;
+            }else if(params[i] instanceof Short){
+                parameterTypes[i] = Short.TYPE;
+            }else if(params[i] instanceof Float){
+                parameterTypes[i] = Float.TYPE;
+            }else if(params[i] instanceof Double){
+                parameterTypes[i] = Double.TYPE;
+            }else if(params[i] instanceof Character){
+                parameterTypes[i] = Character.TYPE;
+            }else if(params[i] instanceof Long){
+                parameterTypes[i] = Long.TYPE;
+            }else if(params[i] instanceof Boolean){
+                parameterTypes[i] = Boolean.TYPE;
+            }else{
+                parameterTypes[i] = params[i].getClass();
+            }
             System.out.println("parameterTypes[i]:" + parameterTypes[i]);
         }
         Method method = null;
