@@ -2,7 +2,7 @@ package wang.tyrael.leetcode.matrix;
 
 import org.junit.Test;
 import wang.tyrael.leetcode.matrix.sudoku.sudokusolver37.Solution;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 /**
  * @author: wangchao

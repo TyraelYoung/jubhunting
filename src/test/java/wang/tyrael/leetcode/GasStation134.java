@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.gasstation134.Solution;
 
 public class GasStation134 {

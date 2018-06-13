@@ -1,16 +1,10 @@
 package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.TreeRangeMap;
-import com.google.common.collect.TreeRangeSet;
-import com.google.common.math.IntMath;
-import wang.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class JavaTest {
     @Test

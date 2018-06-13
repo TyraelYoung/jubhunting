@@ -2,10 +2,9 @@ package wang.tyrael.leetcode.stringcollection;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import wang.tyrael.leetcode.stringcollection.wordlatterII126.Solution;
-import wang.tyrael.basic.TreeNodeStatic;
 import wang.tyrael.leetcode.stringcollection.wordlatterII126.SolutionaTLE;
 
 import java.util.List;

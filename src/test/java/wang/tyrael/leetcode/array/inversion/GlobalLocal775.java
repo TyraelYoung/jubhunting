@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.array.inversion;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.array.inversion.globallocal.Solution;
 
 /**

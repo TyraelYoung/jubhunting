@@ -1,4 +1,4 @@
-package wang;
+package wang.tyrael;
 
 /**
  * 小根堆

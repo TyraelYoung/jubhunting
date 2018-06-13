@@ -1,7 +1,6 @@
 package wang.tyrael.basic.binarytree;
 
-import sun.reflect.generics.tree.Tree;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.matrix;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.matrix.risingwater778.Solution;
 
 /**

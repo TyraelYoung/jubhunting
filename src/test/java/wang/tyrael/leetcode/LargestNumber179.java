@@ -2,7 +2,7 @@ package wang.tyrael.leetcode;
 
 import org.junit.Test;
 import wang.tyrael.leetcode.largestnumber179.Solution;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 /**
  * @author: wangchao

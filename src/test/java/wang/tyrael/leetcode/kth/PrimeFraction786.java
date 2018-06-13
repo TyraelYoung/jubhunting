@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.kth;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.kth.primefraction786.Solution;
 
 /**

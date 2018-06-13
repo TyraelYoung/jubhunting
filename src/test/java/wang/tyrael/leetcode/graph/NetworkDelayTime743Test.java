@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.graph;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.graph.NetworkDelayTime743.Solution;
 
 

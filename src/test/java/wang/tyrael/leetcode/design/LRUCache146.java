@@ -3,7 +3,7 @@ package wang.tyrael.leetcode.design;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import wang.tyrael.leetcode.design.lrucache.LRUCache;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;

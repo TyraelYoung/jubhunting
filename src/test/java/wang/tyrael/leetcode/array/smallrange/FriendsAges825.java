@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.array.smallrange;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import wang.tyrael.leetcode.array.smallrange.friendages825.Solution;
 

@@ -1,7 +1,6 @@
 package wang.tyrael.leetcode;
 
 import org.junit.Test;
-import wang.ArrayUtil;
 //import wang.tyrael.leetcode.beautifularrangementii667.Solution;
 
 public class BeautifulArrangementII {

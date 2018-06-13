@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.createmaximum321.Solution;
 
 public class CreateMaximum321 {

@@ -1,4 +1,4 @@
-package wang;
+package wang.tyrael;
 
 public class Holder<T>{
     T[] a;

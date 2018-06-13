@@ -1,6 +1,6 @@
 package wang.tyrael.leetcode.erectfence587;
 
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.basic.geometry.Point;
 
 import java.util.*;

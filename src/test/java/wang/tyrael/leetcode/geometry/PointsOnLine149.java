@@ -1,7 +1,6 @@
 package wang.tyrael.leetcode.geometry;
 
 import org.junit.Test;
-import wang.ArrayUtil;
 import wang.tyrael.leetcode.TestTask;
 
 import wang.tyrael.leetcode.geometry.pointsonaline.Point;

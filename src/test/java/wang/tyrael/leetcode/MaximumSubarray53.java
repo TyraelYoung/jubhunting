@@ -2,7 +2,7 @@ package wang.tyrael.leetcode;
 
 import org.junit.Test;
 import wang.tyrael.leetcode.maximumsubarray.Solution;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 public class MaximumSubarray53 {
     @Test

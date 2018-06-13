@@ -2,7 +2,7 @@ package wang.tyrael.leetcode.array.arithmetic;
 
 import org.junit.Test;
 import wang.tyrael.leetcode.array.arithmetic.slicesii.Solution;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 public class SlicesII446 {
     @Test

@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.jump;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import wang.tyrael.leetcode.jump.frog403.Solution;
 

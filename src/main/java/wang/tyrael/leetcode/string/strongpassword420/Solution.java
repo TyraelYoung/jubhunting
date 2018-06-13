@@ -29,31 +29,84 @@ public class Solution {
 
         public void move(char in){
             if (size < 20){
-                if (in == data.get(data.size()-1)){
-                    countSame++;
-                    if (countSame >= 3){
-                        countChange ++;
-                        countSame --;
-                    }
-                }else{
-                    countSame = 1;
-                }
-                if (in <= '9' && in >= '0'){
-                    countDigit++;
-                }
-                if (in <= 'Z' && in >= 'A'){
-                    countUpper ++;
-                }
-                if (in < 'z' && in >= 'a'){
-                    countLower ++;
-                }
+                size++;
             }else{
-
+                char out = data.remove(0);
+                if (out <= '9' && out >= '0'){
+                    countDigit--;
+                }
+                if (out <= 'Z' && out >= 'A'){
+                    countUpper --;
+                }
+                if (out < 'z' && out >= 'a'){
+                    countLower --;
+                }
             }
+            if (in <= '9' && in >= '0'){
+                countDigit++;
+            }
+            if (in <= 'Z' && in >= 'A'){
+                countUpper ++;
+            }
+            if (in < 'z' && in >= 'a'){
+                countLower ++;
+            }
+            data.add(in);
         }
 
         public int countChange(){
+            int absenseToChange = processAbsense();
+            int sameToChange = processSame();
+            if (size < 2){
+                return 6-size;
+            }else if(size <6){
+                int sizeToChange = 6-size;
+                //上面两个没有重叠关系
+                //这个跟上面有重叠关系
+                if (sameToChange + sizeToChange > absenseToChange){
+                    return sameToChange + sizeToChange;
+                }else{
+                    return absenseToChange;
+                }
+            }else{
+                if (sameToChange  > absenseToChange){
+                    return sameToChange ;
+                }else{
+                    return absenseToChange;
+                }
+            }
+        }
 
+        private int processAbsense(){
+            int absenseToChange = 0;
+            if (countDigit ==0){
+                absenseToChange ++;
+            }
+            if (countUpper == 0){
+                absenseToChange++;
+            }
+            if (countLower == 0){
+                absenseToChange++;
+            }
+            return absenseToChange;
+        }
+
+        private int processSame(){
+            int lastChar = -1;
+            int countSame = 0;
+            int countChange = 0;
+            for (int i = 0; i < data.size(); i++) {
+                char thisChar = data.get(i);
+                if (lastChar == thisChar){
+                    countSame++;
+                }else{
+                    countSame = 1;
+                }
+                if(countSame % 3 == 0){
+                    countChange++;
+                }
+            }
+            return countChange;
         }
     }
 
@@ -66,6 +119,10 @@ public class Solution {
                 min = window.countChange;
             }
         }
-        return min;
+        if (s.length() > 20){
+            return min + s.length() -20;
+        }else{
+            return window.countChange;
+        }
     }
 }

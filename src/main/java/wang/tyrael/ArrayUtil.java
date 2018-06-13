@@ -1,4 +1,4 @@
-package wang;
+package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
 import wang.tyrael.basic.geometry.Point;

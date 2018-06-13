@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.math;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.TestStatic;
 import wang.tyrael.leetcode.math.productsubarray152.Solution;
 

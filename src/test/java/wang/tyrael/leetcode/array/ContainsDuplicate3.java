@@ -1,7 +1,7 @@
 package wang.tyrael.leetcode.array;
 
 import org.junit.Test;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.TestTask;
 import wang.tyrael.leetcode.array.containsduplicate3.Solution;
 

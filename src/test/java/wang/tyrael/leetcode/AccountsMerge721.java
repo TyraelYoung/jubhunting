@@ -2,7 +2,7 @@ package wang.tyrael.leetcode;
 
 import org.junit.Test;
 import wang.tyrael.leetcode.accountsMerge.Solution;
-import wang.ArrayUtil;
+import wang.tyrael.ArrayUtil;
 
 import java.util.Comparator;
 import java.util.List;
