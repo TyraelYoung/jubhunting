@@ -1,28 +1,22 @@
 package wang.tyrael.basic.binaryserach;
 
 /**
- * 有序数组，返回序号相等的，最大的索引
+ * 有序数组，返回值相等的，最大的索引
+ *
  * @author: wangchao
  * 2018/5/14 0014
  */
 public class MaxEqual implements IBinarySearch {
-    public int binarySearch(int[] arr, int needle){
-        if (arr== null || arr.length == 0){
-            return -1;
-        }
-        int low =0, high = arr.length-1, mid;
+    public int binarySearch(int[] arr, int needle) {
+        if (arr == null || arr.length == 0) return -1;
+        int low = 0, high = arr.length - 1, mid;
 //最终high = low-1
-        while (low <= high){
-            mid = low + (high-low)/2;
-            if (arr[mid] <= needle){
-                low = mid +1;
-            }else{
-                high = mid-1;
-            }
+        while (low <= high) {
+            mid = low + (high - low) >>2;
+            if (arr[mid] <= needle) low = mid + 1;
+            else high = mid - 1;
         }
-        if (high <0 || arr[high] != needle){
-            return -1;
-        }
+        if (high < 0 || arr[high] != needle) return -1;
         return high;
     }
 }

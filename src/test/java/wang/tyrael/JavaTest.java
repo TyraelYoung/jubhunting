@@ -1,9 +1,13 @@
 package wang.tyrael;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.math.IntMath;
+import com.google.common.math.LongMath;
 import wang.tyrael.leetcode.TestStatic;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.math.BigInteger;
 import java.util.*;
 
 public class JavaTest {
@@ -72,11 +76,16 @@ public class JavaTest {
         boolean existComplete = statusList.stream().anyMatch(status->status == 204);
         assert countComplete == 1;
         assert existComplete;
+
+        int i = statusList.stream().filter(status -> status == 205).findAny().get();
+        System.out.println(i);
     }
 
     @org.junit.Test
-    public void test(){
-        List<String> listEqual = new ArrayList<>();
+    public void testCalculate(){
+        System.out.println("sdfas".equals(null));
+
+         List<String> listEqual = new ArrayList<>();
         listEqual.equals(new ArrayList<>());
 
         System.out.println((long)(10e9 + 7));
@@ -137,5 +146,14 @@ public class JavaTest {
         System.out.println("Integer.MAX_VALUE +1:" + (Integer.MAX_VALUE +1));
         System.out.println("Integer.MAX_VALUE +Integer.MAX_VALUE:" + (Integer.MAX_VALUE +Integer.MAX_VALUE));
 
+    }
+
+    @Test
+    public void testCalender() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(2018, 1, 1);
+        System.out.println(calendar.getTime());
+        System.out.println(calendar.getTimeInMillis());
     }
 }
