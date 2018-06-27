@@ -23,18 +23,12 @@ public class KMP {
         //模式和前缀数组的索引，
         int k = -1, i = 0;
         for (; i < text.length(); i++) {
-            while (k > -1 && pattern.charAt(k+1) != text.charAt(i)){
-                k = pi[k];
-            }
-            if (pattern.charAt(k+1) == text.charAt(i)){
-                k++;
-                //准备试探下一个位置
-            }
+            while (k > -1 && pattern.charAt(k+1) != text.charAt(i)) k = pi[k];
+            //准备试探下一个位置
+            if (pattern.charAt(k+1) == text.charAt(i)) k++;
             //else已经没有退路了，从0开始匹配。
             //如果前面升上来了
-            if (k == pattern.length()-1){
-                return i-k;
-            }
+            if (k == pattern.length()-1) return i-k;
         }
         return -1;
     }
@@ -47,17 +41,11 @@ public class KMP {
         for (int i = 1; i < pattern.length(); i++) {
             //从开头，k = 0
             //pi[i] 可以在哪个基础上推进
-            //注意这里试探的是k+1
-            while (k > -1 && pattern.charAt(k+1) != pattern.charAt(i)){
-                //试验失败，回撤
-                //中间的必然不能匹配，直接回撤到上次记录的地方
-                //一直回撤到0
-                k = pi[k];
-            }
-            if (pattern.charAt(k+1) == pattern.charAt(i)){
-                //在k的基础上推进
-                k ++;
-            }
+            //注意这里试探的是k+1;试验失败，回撤;中间的必然不能匹配，直接回撤到上次记录的地方
+            //一直回撤到0
+            while (k > -1 && pattern.charAt(k+1) != pattern.charAt(i)) k = pi[k];
+            //在k的基础上推进
+            if (pattern.charAt(k+1) == pattern.charAt(i)) k ++;
             //else否则，只能以0为基础
             pi[i] = k;
         }
