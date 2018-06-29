@@ -22,4 +22,17 @@ public class SameAverage805 {
         new TestTask(new Solution(), "splitArraySameAverage",
                 new Object[]{ArrayUtil.parse("[1,2,3,4,5,6,7,8]")}, true).run();
     }
+
+    @Test
+    public void test2(){
+        new TestTask(new Solution(), "splitArraySameAverage",
+                new Object[]{ArrayUtil.parse("[1,2,3]")}, true).run();
+    }
+
+    @Test
+    public void test3(){
+        //[18,0,16,2]
+        new TestTask(new Solution(), "splitArraySameAverage",
+                new Object[]{ArrayUtil.parse("[18,0,16,2]")}, true).run();
+    }
 }

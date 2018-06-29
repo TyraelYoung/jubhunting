@@ -1,10 +1,11 @@
 package wang.tyrael.basic.math;
 
+import com.google.common.math.LongMath;
 import wang.tyrael.basic.Tuple;
 
-import static wang.tyrael.basic.math.MathStatic.gcdPositive;
-
 public class Fraction extends Tuple<Long, Long> {
+    public static final Fraction ZERO = new Fraction(0L, 1L);
+
     public Fraction() {
     }
 
@@ -12,18 +13,33 @@ public class Fraction extends Tuple<Long, Long> {
         super(a, b);
     }
 
-    public void reduce(){
+    public Fraction multiply(int a){
+        long x = this.x * a;
+        return new Fraction(x, y).reduce();
+    }
+
+    public Fraction minus(Fraction subtrahend){
+        long x = this.x * subtrahend.y - this.y * subtrahend.x;
+        long y = this.y * subtrahend.y;
+        return new Fraction(x,y).reduce();
+    }
+
+    public Fraction negative(){
+        return new Fraction(this.x, -y);
+    }
+
+    public Fraction reduce(){
         if (x.equals(0)){
             //标准化无穷
             y = y > 0? 1L:-1L;
-            return;
+            return this;
         }
         //注意越界
-        long gcd = gcdPositive(Math.abs(x), Math.abs(y));
+        long gcd = LongMath.gcd(Math.abs(x), Math.abs(y));
         x = x / gcd;
         y = y / gcd;
         normalizeSign();
-        return ;
+        return this;
     }
 
     /**
