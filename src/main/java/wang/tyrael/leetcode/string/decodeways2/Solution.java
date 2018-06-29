@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.decodeways2;
+package wang.tyrael.leetcode.string.decodeways2;
 
 public class Solution {
     private static final int MOD = 1000000000 + 7;

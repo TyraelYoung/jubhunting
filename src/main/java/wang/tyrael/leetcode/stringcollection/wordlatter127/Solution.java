@@ -1,34 +1,17 @@
-package wang.tyrael.leetcode.stringcollection.wordlatterII126;
+package wang.tyrael.leetcode.stringcollection.wordlatter127;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 
 /**
- * Given:
- * beginWord = "hit"
- * endWord = "cog"
- * wordList = ["hot","dot","dog","lot","log","cog"]
- * Return
- * [
- * ["hit","hot","dot","dog","cog"],
- * ["hit","hot","lot","log","cog"]
- * ]
- * <p>
- * ["hit","hot","lot","log","cog", cob]
- * <p>
- * <p>
- * 1， 暴力 n！ bfs 指数
- * 2，双向bfs
- *
- *
- * 处理一下一个单词对应树中多个节点的问题。
- */
-
-/**
- * 构造一个图，然后深度搜索。
+ * @Auther: wangchao
+ * @Date: 2018/6/29 14:08
+ * @Description:
  */
 public class Solution {
-    public static long timeIsNear = 0;
-    public static long timeIsNearCompare = 0;
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        return findLadders( beginWord,  endWord, wordList);
+    }
 
     private Set<String> wordSet;
     String endWord;
@@ -39,39 +22,27 @@ public class Solution {
     boolean flagFind = false;
 
     /**
-     * 记录路径关系, 根是第一个词，或者最后一个词。
-     * 每一层，是上一层的变种。且，存在于单词集
+     * 记录路径关系
      */
     public TreeNode startRoot;
     public TreeNode endRoot;
 
-    //每个层次，宽度遍历辅助
+    //每个层次
     Queue<TreeNode> startQueue;
     Queue<TreeNode> endQueue;
 
     public int countLevel;
 
     /**
-     * 所有的已访问节点
+     * 已访问节点
      */
     Set<String> startSet;
     Set<String> endSet;
 
-    /**
-     * 该层次已访问节点，解决父层次已经包含节点的问题。
-     * 不同把同一层次的节点，加到seen中。
-     * 一层处理完了，再全部加到seen中。
-     */
     Set<String> seenThisLevel = new HashSet<>();
 
-    /**
-     * 两棵树，子节点相遇的地方。可能会匹配多个点。
-     */
     Set<String> meetPoint;
 
-    /**
-     * 解决多个点的问题。
-     */
     Map<String, List<TreeNode>> startValueToNode;
     Map<String, List<TreeNode>> endValueToNode;
 
@@ -91,17 +62,17 @@ public class Solution {
         meetPoint = new HashSet<>();
     }
 
-    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+    public int findLadders(String beginWord, String endWord, List<String> wordList) {
         //用于缓存，防止多次比较
         wordSet = new HashSet<>();
         wordSet.addAll(wordList);
         this.endWord = endWord;
         if (!wordSet.contains(endWord)){
-            return new ArrayList<>();
+            return 0;
         }
 
-        startRoot = new TreeNode(beginWord, -1);
-        endRoot = new TreeNode(endWord, endIndex);
+        startRoot = new TreeNode(beginWord, -1, 0);
+        endRoot = new TreeNode(endWord, endIndex, 0);
 
         initStartQueue(beginWord);
         initEndQueue(endWord);
@@ -137,40 +108,17 @@ public class Solution {
         return formatResult();
     }
 
-    public List<List<String>> formatResult(){
+    public int formatResult(){
         if (flagFind) {
             List<List<String>> resultFormat = new ArrayList<>();
             for (String meet : meetPoint) {
                 List<TreeNode> meetInEnd = endValueToNode.get(meet);
                 List<TreeNode> meetInStart = startValueToNode.get(meet);
-
-                for (TreeNode treeNodeInStart :
-                        meetInStart) {
-                    for (TreeNode treeNodeInEnd :
-                            meetInEnd) {
-                        List<String> item = new ArrayList<>();
-
-                        TreeNode next = treeNodeInStart;
-                        while (next != null) {
-                            item.add(0, next.word);
-                            next = next.parent;
-                        }
-                        next = treeNodeInEnd.parent;
-
-                        while (next != null) {
-                            item.add(next.word);
-                            next = next.parent;
-                        }
-                        resultFormat.add(item);
-                    }
-                }
+                return meetInEnd.get(0).level + meetInStart.get(0).level +1;
             }
-
-            //转化一下
-            return resultFormat;
-        } else {
-            return new ArrayList<>();
         }
+        return 0;
+
     }
 
     public void putNode(Map<String, List<TreeNode>> map, TreeNode treeNode){
@@ -242,6 +190,7 @@ public class Solution {
                         }
                         //符合要求的变种
                         TreeNode nchild = new TreeNode(child, next);
+                        nchild.level = next.level +1;
                         queue.add(nchild);
                         putNode(valueToNode, nchild);
                         seenThisLevel.add(child);
@@ -256,7 +205,8 @@ public class Solution {
             }
 
         }
-     }
+    }
+
 
 }
 
@@ -264,6 +214,7 @@ class TreeNode {
 
     public String word;
     public int index;
+    public int level =0;
     //调试使用
     public List<TreeNode> children = new ArrayList<>();
     public TreeNode parent;
@@ -275,6 +226,12 @@ class TreeNode {
     public TreeNode(String word, int index) {
         this.word = word;
         this.index = index;
+    }
+
+    public TreeNode(String word, int index, int level) {
+        this.word = word;
+        this.index = index;
+        this.level = level;
     }
 
     public TreeNode(String word, int index, TreeNode parent) {
@@ -293,6 +250,3 @@ class TreeNode {
         return word;
     }
 }
-
-
-

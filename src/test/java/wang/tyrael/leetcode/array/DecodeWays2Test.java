@@ -1,6 +1,6 @@
 package wang.tyrael.leetcode.array;
 
-import wang.tyrael.leetcode.decodeways2.Solution;
+import wang.tyrael.leetcode.string.decodeways2.Solution;
 
 public class DecodeWays2Test {
     public static void main(String[] args){

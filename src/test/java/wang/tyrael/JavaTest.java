@@ -130,6 +130,8 @@ public class JavaTest {
 
     @Test
     public void testInt(){
+        System.out.println(Integer.parseInt(""));
+
         System.out.println("Integer.MAX_VALUE - Integer.MIN_VALUE:" + (Integer.MAX_VALUE - Integer.MIN_VALUE));
 
         System.out.println("2 * Integer.MAX_VALUE:" + 2*Integer.MAX_VALUE);
