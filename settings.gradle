@@ -1,2 +1,4 @@
 rootProject.name = 'learning'
 
+include('LibJava')
+project(':LibJava').projectDir = new File(settingsDir, '../LibJava')
