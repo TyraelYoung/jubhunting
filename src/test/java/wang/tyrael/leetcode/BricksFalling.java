@@ -2,7 +2,7 @@ package wang.tyrael.leetcode;
 
 import org.junit.Test;
 import wang.tyrael.ArrayUtil;
-import wang.tyrael.leetcode.BricksFalling803.Solution;
+import wang.tyrael.leetcode.matrix.bricksfalling803.Solution;
 
 public class BricksFalling {
     @Test

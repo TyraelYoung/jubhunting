@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.BricksFalling803;
+package wang.tyrael.leetcode.matrix.bricksfalling803;
 
 import java.util.Arrays;
 

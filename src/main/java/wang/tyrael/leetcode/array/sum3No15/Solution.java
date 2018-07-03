@@ -36,8 +36,8 @@ public class Solution {
                     oneResult.add(nums[ci]);
                     oneResult.sort((o1, o2) -> {return o1-o2;});
                     midResult.add(oneResult);
-                    bi++;
-                    ci--;
+                    do{bi++;}while(bi < ci && nums[bi] == nums[bi-1]);
+                    do{ci--;}while(bi< ci && nums[ci] == nums[ci+1]);
                     continue;
                 }
                 if (nums[bi] + nums[ci] < -nums[ai] ){

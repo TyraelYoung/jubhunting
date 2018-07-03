@@ -22,4 +22,16 @@ public class Sum3No15 {
                         "]"),
                 new Solution().threeSum(ArrayUtil.parse("[-1, 0, 1, 2, -1, -4]")));
     }
+
+//    Input:
+//            [-2,0,1,1,2]
+//    Output:
+//            [[-2,0,2]]
+//    Expected:
+//            [[-2,0,2],[-2,1,1]]
+    @Test
+    public void test1(){
+        TestStatic.assertResult(ArrayUtil.parse2DInteger("[[-2,0,2],[-2,1,1]]"),
+                new Solution().threeSum(ArrayUtil.parse("[-2,0,1,1,2]")));
+    }
 }
