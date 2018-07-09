@@ -23,6 +23,7 @@ public class DisjointCountSet {
      * @param x
      */
     public void makeSet(int x) {
+        if (parent[x] != 0) return;
         parent[x] = x;
         rank[x] = 0;
         count[x] = 1;
