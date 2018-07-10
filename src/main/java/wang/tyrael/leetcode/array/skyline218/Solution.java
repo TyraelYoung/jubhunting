@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.skyline218;
+package wang.tyrael.leetcode.array.skyline218;
 
 import java.util.*;
 
@@ -138,8 +138,6 @@ public class Solution {
                             heightCurrent = event.height;
                             result.add(new int[]{event.getHappenPoint(), heightCurrent});
                         }
-
-
                     }
                     break;
                 case Event.TYPE_END:

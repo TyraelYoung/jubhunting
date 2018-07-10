@@ -125,7 +125,6 @@ public class JavaTest {
         System.out.println("test".substring(0, 1));
         System.out.println("test".substring(0, 0));
         System.out.println("test".substring(0, 2));
-
     }
 
     @Test
