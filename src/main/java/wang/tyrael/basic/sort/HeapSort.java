@@ -16,12 +16,10 @@ public class HeapSort {
         //左孩子
         int top = a[start];
         int i;
-        for (i = 2 * start + 1; i <= end; i = 2 * (i + 1)) {
+        for (i = 2 * start + 1; i <= end; i = 2 * i + 1) {
             //i 较大的孩子
             int maxIndex = i;
-            if (i+1<= end && a[i] < a[i + 1]) {
-                maxIndex = i + 1;
-            }
+            if (i+1<= end && a[i] < a[i + 1]) maxIndex = i + 1;
             if (a[maxIndex] > top) {
                 //较大的值上浮
                 a[(i-1)/2] = a[maxIndex];
