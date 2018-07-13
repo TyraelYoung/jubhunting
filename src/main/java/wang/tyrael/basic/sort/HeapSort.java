@@ -17,18 +17,24 @@ public class HeapSort {
         int top = a[start];
         int i;
         for (i = 2 * start + 1; i <= end; i = 2 * i + 1) {
-            //i 较大的孩子
+            //本次处理结束前，i始终左孩子 max较大的孩子
             int maxIndex = i;
-            if (i+1<= end && a[i] < a[i + 1]) maxIndex = i + 1;
+            if (i + 1 <= end && a[i] < a[i + 1]) maxIndex = i + 1;
             if (a[maxIndex] > top) {
                 //较大的值上浮
-                a[(i-1)/2] = a[maxIndex];
+                a[(i - 1) / 2] = a[maxIndex];
+                //进入处理过的分支
+                i = maxIndex;
             } else {
-                a[(i-1)/2] = top;
+                //孩子都比较小，不再上浮
+                a[(i - 1) / 2] = top;
                 return;
             }
+
         }
-        a[(i-1)/2] = top;
+        //超出界限
+        a[(i - 1) / 2] = top;
+
     }
 
     public void init(int[] a){

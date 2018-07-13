@@ -129,7 +129,10 @@ public class JavaTest {
 
     @Test
     public void testInt(){
-        System.out.println(Integer.parseInt(""));
+        System.out.println("1>>1:" + (1>>1));
+        System.out.println("1>>>1:" + (1>>>1));
+
+        //System.out.println(Integer.parseInt(""));
 
         System.out.println("Integer.MAX_VALUE - Integer.MIN_VALUE:" + (Integer.MAX_VALUE - Integer.MIN_VALUE));
 
