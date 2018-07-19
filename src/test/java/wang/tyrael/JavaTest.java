@@ -9,10 +9,12 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.Semaphore;
 
 public class JavaTest {
     @Test
     public void testLong(){
+        Semaphore
         Long a  = 0L;
         //!!!
         System.out.println(a.equals(0));
