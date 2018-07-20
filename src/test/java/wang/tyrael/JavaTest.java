@@ -13,8 +13,13 @@ import java.util.concurrent.Semaphore;
 
 public class JavaTest {
     @Test
+    public void testArray(){
+        int a = new int[1,2,3];
+        Arrays.copyOfRange()
+    }
+
+    @Test
     public void testLong(){
-        Semaphore
         Long a  = 0L;
         //!!!
         System.out.println(a.equals(0));
@@ -85,6 +90,8 @@ public class JavaTest {
 
     @org.junit.Test
     public void testCalculate(){
+        System.out.println("4 + 4 >>1:" + (4 + 4 >>1));
+
         System.out.println("sdfas".equals(null));
 
          List<String> listEqual = new ArrayList<>();
