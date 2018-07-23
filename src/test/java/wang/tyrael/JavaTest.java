@@ -13,9 +13,15 @@ import java.util.concurrent.Semaphore;
 
 public class JavaTest {
     @Test
+    public void testFor(){
+        int i = 10;
+        for (i=11; i > 10;i--);
+        System.out.println(i);
+    }
+
+    @Test
     public void testArray(){
-        int a = new int[1,2,3];
-        Arrays.copyOfRange()
+
     }
 
     @Test
@@ -90,6 +96,14 @@ public class JavaTest {
 
     @org.junit.Test
     public void testCalculate(){
+        int move = 2;
+        move >>=1;
+        System.out.println(move);
+
+        move = 2;
+//        move-1;
+        System.out.println(move);
+
         System.out.println("4 + 4 >>1:" + (4 + 4 >>1));
 
         System.out.println("sdfas".equals(null));
