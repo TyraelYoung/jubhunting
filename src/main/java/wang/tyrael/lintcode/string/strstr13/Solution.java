@@ -1,10 +1,18 @@
-package wang.tyrael.basic.string;
+package wang.tyrael.lintcode.string.strstr13;
 
 /**
- * 脑中有个后缀前缀关系图。已匹配截断的后缀，pattern的前缀。
- * 最长前缀就是当前回撤的位置。
+ * @author: wangchao
+ * 2018/7/28 0028
  */
-public class KMP {
+public class Solution {
+    public int strStr(String source, String target) {
+        // write your code here
+        KMP kmp = new KMP(target);
+        return kmp.match(source);
+    }
+}
+
+class KMP {
     final String pattern;
     int preIndex[];
 
