@@ -13,9 +13,15 @@ import java.util.concurrent.Semaphore;
 
 public class JavaTest {
     @Test
+    public void testString(){
+        String a = "";
+        System.out.println(a.equals(null));
+    }
+
+    @Test
     public void testArray(){
-        int a = new int[1,2,3];
-        Arrays.copyOfRange()
+//        int a = new int[1,2,3];
+//        Arrays.copyOfRange()
     }
 
     @Test
@@ -138,6 +144,10 @@ public class JavaTest {
 
     @Test
     public void testInt(){
+        Integer.numberOfTrailingZeros(0);
+
+        System.out.println("Integer.bitCount(-1):" + Integer.bitCount(-1));
+
         System.out.println("1>>1:" + (1>>1));
         System.out.println("1>>>1:" + (1>>>1));
 
