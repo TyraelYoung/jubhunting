@@ -13,6 +13,18 @@ import java.util.concurrent.Semaphore;
 
 public class JavaTest {
     @Test
+    public void testVarArgs(){
+        testVar(new String[]{"a", "b"});
+//        testVar(Arrays.asList(new String[]{"c", "d"}));
+    }
+
+    private void testVar(String... a){
+        Arrays.stream(a).forEach(s -> {
+            System.out.println(s);
+        });
+    }
+
+    @Test
     public void testFor(){
         int i = 10;
         for (i=11; i > 10;i--);
