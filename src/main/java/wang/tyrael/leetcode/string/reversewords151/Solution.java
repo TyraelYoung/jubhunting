@@ -7,12 +7,8 @@ package wang.tyrael.leetcode.string.reversewords151;
 public class Solution {
     public String reverseWords(String s) {
         //判空
-        if (s == null){
-            return null;
-        }
-        if (s.length() == 0){
-            return "";
-        }
+        if (s == null) return null;
+        if (s.length() == 0) return "";
         //整体反转
         char[] letters = s.toCharArray();
         reverse(0, letters.length-1, letters);
@@ -20,16 +16,10 @@ public class Solution {
         int start = -1, end =-1;
         while(end < letters.length-1){
             start = end+1;
-            while (start < letters.length && letters[start] == ' '){
-                start ++;
-            }
+            while (start < letters.length && letters[start] == ' ') start ++;
             end = start;
-            while (end+1 < letters.length && letters[end+1] != ' '){
-                end ++;
-            }
-            if (end < letters.length){
-                reverse(start, end, letters);
-            }
+            while (end+1 < letters.length && letters[end+1] != ' ')end ++;
+            if (end < letters.length) reverse(start, end, letters);
         }
         //去除多余的0
         boolean flagHasSpace = true;

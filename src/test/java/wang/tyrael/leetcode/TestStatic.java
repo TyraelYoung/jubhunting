@@ -9,18 +9,18 @@ public class TestStatic {
         System.out.println("result:" + o);
     }
 
-    public static void assertResult(Object answer, Object result){
-        if (answer instanceof Collection){
-            assetResult((Collection) answer, (Collection) result);
+    public static void assertResult(Object expect, Object result){
+        if (expect instanceof Collection){
+            assetResult((Collection) expect, (Collection) result);
             return;
         }
-        if (answer instanceof int[]){
-            assetResultArray((int[]) answer, (int[])result);
+        if (expect instanceof int[]){
+            assetResultArray((int[]) expect, (int[])result);
             return;
         }
-        System.out.println("应该结果:" + answer);
+        System.out.println("应该结果:" + expect);
         System.out.println("实际结果:" + result);
-        assert answer.equals(result);
+        assert expect.equals(result);
     }
 
     public static void assetResultArray(int[] answer, int[] result){
