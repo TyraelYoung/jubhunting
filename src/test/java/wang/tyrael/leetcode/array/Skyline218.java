@@ -2,7 +2,7 @@ package wang.tyrael.leetcode.array;
 
 import org.junit.Test;
 import wang.tyrael.ArrayUtil;
-import wang.tyrael.leetcode.array.skyline218.Solution;
+import wang.tyrael.leetcode.geometry.skyline218.Solution;
 
 import java.util.List;
 

@@ -4,30 +4,24 @@ import java.util.Arrays;
 
 public class Floyd {
     final int[][] times;
-    final int K;
     int N;
-
     int[][] distance;
 
-    public Floyd(int[][] times, int k) {
+    public Floyd(int[][] times) {
         this.times = times;
-        K = k;
         N = times[0].length;
-
         distance = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            distance[i] = Arrays.copyOf(times[i], N);
-        }
+        for (int i = 0; i < N; i++)  distance[i] = Arrays.copyOf(times[i], N);
     }
 
     public void run(){
-        for (int i = 0; i < N; i++) {
+        for (int bridge = 0; bridge < N; bridge++) {
             //借助点i，从j到k的距离可以更新了
-            for (int j = 0; j < N; j++) {
-                for (int k = 0; k < N; k++) {
+            for (int start = 0; start < N; start++) {
+                for (int end = 0; end < N; end++) {
 //                    if (distance[j][k] > distance[j][i] + distance[i][k]){
-                    if (distance[j][k] -distance[j][i] > distance[i][k]){
-                        distance[j][k] = distance[j][i] + distance[i][k];
+                    if (distance[start][end] -distance[start][bridge] > distance[bridge][end]){
+                        distance[start][end] = distance[start][bridge] + distance[bridge][end];
                     }
                 }
             }
