@@ -26,6 +26,7 @@ public class LRUCache {
 
 
     public Map<Integer, Node> map = new HashMap<>();
+    //因为原生的LinkedList不支持O(1)删除
     public Node head = new Node(),
             tail = new Node();
     int capacity, occupy = 0;
@@ -58,7 +59,6 @@ public class LRUCache {
 
             head.after.before = node;
             head.after = node;
-
 
             return node;
         }
