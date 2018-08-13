@@ -72,7 +72,7 @@ public class DisjointCountSet {
         return count[parent];
     }
 
-    public void setCount(int i, int c){
+    private void setCount(int i, int c){
         int parent = findSet(i);
         count[parent] = c;
     }

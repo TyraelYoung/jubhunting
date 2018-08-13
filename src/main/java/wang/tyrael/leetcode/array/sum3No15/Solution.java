@@ -14,21 +14,12 @@ public class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums == null || nums.length < 3) return result;
-
         Set<List<Integer>> midResult = new HashSet<>();
         Arrays.sort(nums);
         for (int ai = 0; ai < nums.length; ai++) {
             if (ai > 0 && nums[ai] == nums[ai-1]) continue;
             int bi = ai+1, ci = nums.length-1;
             while(bi < ci){
-                if (bi == ai){
-                    bi++;
-                    continue;
-                }
-                if(ci == ai) {
-                    ci--;
-                    continue;
-                }
                 if (nums[bi] + nums[ci] == -nums[ai]){
                     List<Integer> oneResult = new ArrayList<>();
                     oneResult.add(nums[ai]);
@@ -41,15 +32,10 @@ public class Solution {
                     do{ci--;}while(bi< ci && nums[ci] == nums[ci+1]);
                     continue;
                 }
-                if (nums[bi] + nums[ci] < -nums[ai] ){
-                    bi ++;
-                }
-                if (nums[bi] + nums[ci] > -nums[ai] ){
-                    ci --;
-                }
+                if (nums[bi] + nums[ci] < -nums[ai] ) bi ++;
+                if (nums[bi] + nums[ci] > -nums[ai] ) ci --;
             }
         }
-
         result.addAll(midResult);
         return result;
     }
