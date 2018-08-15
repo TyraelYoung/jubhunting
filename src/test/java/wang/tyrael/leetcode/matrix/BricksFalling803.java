@@ -33,7 +33,7 @@ public class BricksFalling803 {
 //            [1,0,1,0,0]
     @Test
     public void test1(){
-        TestStatic.assertResult(ArrayUtil.parse("[1,0,1,0,0]"),
+        TestStatic.assertAndPrint(ArrayUtil.parse("[1,0,1,0,0]"),
                 new Solution().hitBricks(ArrayUtil.parse2D("[[1],[1],[1],[1],[1]]"),
                         ArrayUtil.parse2D("[[3,0],[4,0],[1,0],[2,0],[0,0]]")));
     }
@@ -48,7 +48,7 @@ public class BricksFalling803 {
 
     @Test
     public void test2(){
-        TestStatic.assertResult(ArrayUtil.parse("[0,0,1,0]"),
+        TestStatic.assertAndPrint(ArrayUtil.parse("[0,0,1,0]"),
                 new Solution().hitBricks(ArrayUtil.parse2D("[[1,1,1],[0,1,0],[0,0,0]]"),
                         ArrayUtil.parse2D("[[0,2],[2,0],[0,1],[1,2]]")));
     }
@@ -62,7 +62,7 @@ public class BricksFalling803 {
 //            [0,0,0,0,0,0,0,0,0,0,0]
     @Test
     public void test3(){
-        TestStatic.assertResult(ArrayUtil.parse("[0,0,0,0,0,0,0,0,0,0,0]"),
+        TestStatic.assertAndPrint(ArrayUtil.parse("[0,0,0,0,0,0,0,0,0,0,0]"),
                 new Solution().hitBricks(
                         ArrayUtil.parse2D("[[0,1,1,1,1]," +
                                 "[1,1,1,1,0],[1,1,1,1,0],[0,0,1,1,0]," +

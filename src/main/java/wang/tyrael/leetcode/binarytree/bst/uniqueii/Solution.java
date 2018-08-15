@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.bst.uniqueii;
+package wang.tyrael.leetcode.binarytree.bst.uniqueii;
 
 import wang.tyrael.basic.binarytree.TreeNode;
 

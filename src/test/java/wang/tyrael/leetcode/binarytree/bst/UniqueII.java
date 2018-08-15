@@ -1,9 +1,9 @@
-package wang.tyrael.leetcode.bst;
+package wang.tyrael.leetcode.binarytree.bst;
 
 import org.junit.Test;
 import wang.tyrael.basic.binarytree.TreeNode;
 import wang.tyrael.basic.binarytree.BinaryTreeNodeStatic;
-import wang.tyrael.leetcode.bst.uniqueii.Solution;
+import wang.tyrael.leetcode.binarytree.bst.uniqueii.Solution;
 
 import java.util.List;
 

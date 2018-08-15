@@ -11,16 +11,16 @@ import wang.tyrael.lintcode.string.strstr13.Solution;
 public class StrStr13 {
     @Test
     public void test(){
-        TestStatic.assertResult(1, new Solution().strStr("abcdabcdefg", "bcd"));
+        TestStatic.assertAndPrint(1, new Solution().strStr("abcdabcdefg", "bcd"));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(0, new Solution().strStr("a", ""));
+        TestStatic.assertAndPrint(0, new Solution().strStr("a", ""));
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(-1, new Solution().strStr(null, "a"));
+        TestStatic.assertAndPrint(-1, new Solution().strStr(null, "a"));
     }
 }

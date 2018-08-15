@@ -1,7 +1,5 @@
 package wang.tyrael.leetcode;
 
-import wang.tyrael.ArrayUtil;
-
 import java.util.Collection;
 
 public class TestStatic {
@@ -9,13 +7,13 @@ public class TestStatic {
         System.out.println("result:" + o);
     }
 
-    public static void assertResult(Object expect, Object result){
+    public static void assertAndPrint(Object expect, Object result){
         if (expect instanceof Collection){
-            assetResult((Collection) expect, (Collection) result);
+            printCollection((Collection) expect, (Collection) result);
             return;
         }
         if (expect instanceof int[]){
-            assetResultArray((int[]) expect, (int[])result);
+            assetAndPrintArray((int[]) expect, (int[])result);
             return;
         }
         System.out.println("应该结果:" + expect);
@@ -23,7 +21,7 @@ public class TestStatic {
         assert expect.equals(result);
     }
 
-    public static void assetResultArray(int[] answer, int[] result){
+    public static void assetAndPrintArray(int[] answer, int[] result){
         System.out.print("应该结果:");
         for (Object s :
                 answer) {
@@ -37,7 +35,7 @@ public class TestStatic {
         }
     }
 
-    public static void assetResult(Collection answer, Collection result){
+    public static void printCollection(Collection answer, Collection result){
         System.out.print("应该结果:");
         for (Object s :
                 answer) {

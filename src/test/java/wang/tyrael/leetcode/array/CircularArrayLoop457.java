@@ -14,16 +14,16 @@ import wang.tyrael.leetcode.array.circulararrayloop457.Solution;
 public class CircularArrayLoop457 {
     @Test
     public void test(){
-        TestStatic.assertResult(true, new Solution().circularArrayLoop(ArrayUtil.parse("[2, -1, 1, 2, 2]")));
+        TestStatic.assertAndPrint(true, new Solution().circularArrayLoop(ArrayUtil.parse("[2, -1, 1, 2, 2]")));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(false, new Solution().circularArrayLoop(ArrayUtil.parse(" [-1, 2]")));
+        TestStatic.assertAndPrint(false, new Solution().circularArrayLoop(ArrayUtil.parse(" [-1, 2]")));
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(false, new Solution().circularArrayLoop(ArrayUtil.parse(" [-2, 1, -1, -2, -2]")));
+        TestStatic.assertAndPrint(false, new Solution().circularArrayLoop(ArrayUtil.parse(" [-2, 1, -1, -2, -2]")));
     }
 }

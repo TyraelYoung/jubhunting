@@ -64,6 +64,6 @@ public class TestTask implements Runnable{
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-        TestStatic.assertResult(answer, result);
+        TestStatic.assertAndPrint(answer, result);
     }
 }

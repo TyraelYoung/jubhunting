@@ -12,26 +12,26 @@ import wang.tyrael.leetcode.string.compareversion165.Solution;
 public class CompareVersion165 {
     @Test
     public void test(){
-        TestStatic.assertResult(-1, new Solution().compareVersion("0.1", "1.1"));
+        TestStatic.assertAndPrint(-1, new Solution().compareVersion("0.1", "1.1"));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(1, new Solution().compareVersion("1.0.1", "1"));
+        TestStatic.assertAndPrint(1, new Solution().compareVersion("1.0.1", "1"));
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(-1, new Solution().compareVersion("7.5.2.4", "7.5.3"));
+        TestStatic.assertAndPrint(-1, new Solution().compareVersion("7.5.2.4", "7.5.3"));
     }
 
     @Test
     public void test3(){
-        TestStatic.assertResult(0, new Solution().compareVersion("", ""));
+        TestStatic.assertAndPrint(0, new Solution().compareVersion("", ""));
     }
 
     @Test
     public void test4(){
-        TestStatic.assertResult(0, new Solution().compareVersion("1.0", "1"));
+        TestStatic.assertAndPrint(0, new Solution().compareVersion("1.0", "1"));
     }
 }

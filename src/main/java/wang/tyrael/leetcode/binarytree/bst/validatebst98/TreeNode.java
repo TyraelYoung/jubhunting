@@ -1,4 +1,4 @@
-package wang.tyrael.leetcode.bst.validatebst98;
+package wang.tyrael.leetcode.binarytree.bst.validatebst98;
 
 public class TreeNode {
     public int val;

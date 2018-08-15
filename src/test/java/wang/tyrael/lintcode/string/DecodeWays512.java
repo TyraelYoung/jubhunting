@@ -11,16 +11,16 @@ import wang.tyrael.lintcode.string.decodeways512.Solution;
 public class DecodeWays512 {
     @Test
     public void test(){
-        TestStatic.assertResult(1, new Solution().numDecodings("1"));
+        TestStatic.assertAndPrint(1, new Solution().numDecodings("1"));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(2, new Solution().numDecodings("12"));
+        TestStatic.assertAndPrint(2, new Solution().numDecodings("12"));
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(8, new Solution().numDecodings("192611"));
+        TestStatic.assertAndPrint(8, new Solution().numDecodings("192611"));
     }
 }

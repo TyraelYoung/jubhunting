@@ -13,22 +13,22 @@ import wang.tyrael.lintcode.matrix.battleships986.Solution;
 public class Battleships986 {
     @Test
     public void test(){
-        TestStatic.assertResult(0, new Solution().countBattleships(new char[0][0]));
+        TestStatic.assertAndPrint(0, new Solution().countBattleships(new char[0][0]));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(0, new Solution().countBattleships(new char[][]{{'.'}}));
+        TestStatic.assertAndPrint(0, new Solution().countBattleships(new char[][]{{'.'}}));
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(1, new Solution().countBattleships(new char[][]{{'X'}}));
+        TestStatic.assertAndPrint(1, new Solution().countBattleships(new char[][]{{'X'}}));
     }
 
     @Test
     public void test3(){
-        TestStatic.assertResult(2,
+        TestStatic.assertAndPrint(2,
                 new Solution().countBattleships(ArrayUtil.parseChar2D("[[\"X\",\".\",\".\",\"X\"],[\".\",\".\",\".\",\"X\"],[\".\",\".\",\".\",\"X\"]]")));
     }
 }

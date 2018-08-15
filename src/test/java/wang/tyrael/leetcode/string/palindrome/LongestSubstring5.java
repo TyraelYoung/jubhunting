@@ -9,27 +9,27 @@ public class LongestSubstring5 {
     public void test(){
         Solution solution = new Solution();
         String result = solution.longestPalindrome("babad");
-        TestStatic.assertResult("bab", result);
+        TestStatic.assertAndPrint("bab", result);
     }
 
     @Test
     public void test1(){
         Solution solution = new Solution();
         String result = solution.longestPalindrome("cbbd");
-        TestStatic.assertResult("bb", result);
+        TestStatic.assertAndPrint("bb", result);
     }
 
     @Test
     public void test2(){
         Solution solution = new Solution();
         String result = solution.longestPalindrome("");
-        TestStatic.assertResult("", result);
+        TestStatic.assertAndPrint("", result);
     }
 
     @Test
     public void test3(){
         Solution solution = new Solution();
         String result = solution.longestPalindrome("1");
-        TestStatic.assertResult("1", result);
+        TestStatic.assertAndPrint("1", result);
     }
 }

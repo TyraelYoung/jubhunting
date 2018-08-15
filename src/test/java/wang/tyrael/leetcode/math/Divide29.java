@@ -9,27 +9,27 @@ public class Divide29 {
     public void test(){
         Solution solution = new Solution();
         int result = solution.divide(Integer.MIN_VALUE, -1);
-        TestStatic.assertResult(Integer.MAX_VALUE, result);
+        TestStatic.assertAndPrint(Integer.MAX_VALUE, result);
     }
 
     @Test
     public void test1(){
         Solution solution = new Solution();
         int result = solution.divide(1, -1);
-        TestStatic.assertResult(-1, result);
+        TestStatic.assertAndPrint(-1, result);
     }
 
     @Test
     public void test2(){
         Solution solution = new Solution();
         int result = solution.divide(Integer.MAX_VALUE, Integer.MIN_VALUE);
-        TestStatic.assertResult(0, result);
+        TestStatic.assertAndPrint(0, result);
     }
 
     @Test
     public void test3(){
         Solution solution = new Solution();
         int result = solution.divide(Integer.MIN_VALUE, Integer.MAX_VALUE);
-        TestStatic.assertResult(-1, result);
+        TestStatic.assertAndPrint(-1, result);
     }
 }

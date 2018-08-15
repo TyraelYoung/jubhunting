@@ -16,6 +16,10 @@ public class JavaTest {
     public void testString(){
         String a = "";
         System.out.println(a.equals(null));
+
+        a = "#,";
+        String[] s = a.split(",");
+        System.out.println(s.length);
     }
 
     @Test

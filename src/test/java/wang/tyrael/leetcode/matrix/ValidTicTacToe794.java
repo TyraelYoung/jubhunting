@@ -13,20 +13,20 @@ import wang.tyrael.leetcode.matrix.tictactoe.validtictactoe794.Solution;
 public class ValidTicTacToe794 {
     @Test
     public void test(){
-        TestStatic.assertResult(true,
+        TestStatic.assertAndPrint(true,
                 new Solution().validTicTacToe(ArrayUtil.parseString("[\"XXX\",\"OOX\",\"OOX\"]")));
     }
 
     @Test
     public void test1(){
-        TestStatic.assertResult(false,
+        TestStatic.assertAndPrint(false,
                 new Solution().validTicTacToe(ArrayUtil.parseString("[\"XXX\",\"XOO\",\"OO \"]")));
 
     }
 
     @Test
     public void test2(){
-        TestStatic.assertResult(false,
+        TestStatic.assertAndPrint(false,
                 new Solution().validTicTacToe(ArrayUtil.parseString("[\"OXX\",\"XOX\",\"OXO\"]")));
 
     }
