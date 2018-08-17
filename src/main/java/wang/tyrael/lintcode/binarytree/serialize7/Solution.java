@@ -70,9 +70,7 @@ public class Solution {
     private TreeNode construct(String[] sValues, int thisIndex){
         String sValue = sValues[thisIndex];
         sValue = sValue.trim();
-        if (sValue.equals("#")){
-            return null;
-        }
+        if (sValue.equals("#")) return null;
         int value = Integer.parseInt(sValue);
         TreeNode treeNode = new TreeNode(value);
         treeNode.left = construct(sValues, (thisIndex << 1) +1);
