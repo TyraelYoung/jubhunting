@@ -4,6 +4,7 @@ import org.junit.Test;
 import wang.tyrael.ArrayUtil;
 import wang.tyrael.leetcode.geometry.skyline218.Solution;
 
+
 import java.util.List;
 
 public class Skyline218 {
@@ -17,6 +18,7 @@ public class Skyline218 {
         System.out.println("[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]:");
         ArrayUtil.printIntArray(result);
         System.out.println();
+
     }
 
     //
