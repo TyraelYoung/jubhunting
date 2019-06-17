@@ -1,15 +1,20 @@
-package wang.tyrael;
+package wang.tyrael.java;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.math.IntMath;
-import com.google.common.math.LongMath;
-import wang.tyrael.leetcode.TestStatic;
+
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-import java.math.BigInteger;
-import java.util.*;
-import java.util.concurrent.Semaphore;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import wang.tyrael.ArrayUtil;
+import wang.tyrael.leetcode.TestStatic;
 
 public class JavaTest {
     @Test
@@ -122,7 +127,7 @@ public class JavaTest {
         String testMapString = (String) map.get("test");
         System.out.println("testMapString:" + testMapString);
 
-        String s = (String)null;
+        String s = null;
         System.out.println("String s = (String)null:" + s);
 
         List<String> list = new ArrayList<>();
