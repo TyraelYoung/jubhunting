@@ -21,7 +21,7 @@ public class CountRepetitions466 {
                 1000000, "xtlsgypsfadpooefxzbcoejuvpvaboygpoeylfpbnpljvrvipyamyehwqnqrqpmxujjloovaowuxwhmsncbxcoksfzkvatxdknly",
                 100);
         long end = System.currentTimeMillis();
-        System.out.println("耗时：" + (end - start));
+        System.out.println("耗时: " + (end - start));
 //        assert result == 2;
     }
 }

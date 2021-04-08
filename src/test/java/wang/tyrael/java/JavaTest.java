@@ -77,15 +77,6 @@ public class JavaTest {
     }
 
     @org.junit.Test
-    public void testSwitch(){
-        String s = null;
-        switch (s){
-            case "a":
-                break;
-        }
-    }
-
-    @org.junit.Test
     public void testLeft(){
         int a = 'a' - 'a';
         int b = 1<<a;
