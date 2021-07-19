@@ -17,7 +17,7 @@ public class GetTranslationFromResRunnable {
     private final Map<String, StringXmlParser> stringXmlParserMap = new HashMap<>();
 
     /**
-     * @param resDirs    考虑存在多个文件的情况
+     * @param resDirs 考虑存在多个文件的情况
      */
     public GetTranslationFromResRunnable(List<String> resDirs, List<String> stringNames, String outputPath) {
         this.resDirs = resDirs;
@@ -51,18 +51,9 @@ public class GetTranslationFromResRunnable {
                 if (stringsXml == null || stringsXml.length != 1) {
                     continue;
                 }
-                stringXmlParserMap.put(getLanguage(valuesDir.getName()),
+                stringXmlParserMap.put(AndroidStringFileNameUtil.getLanguage(valuesDir.getName()),
                         new StringXmlParser(stringsXml[0].getAbsolutePath()).parse());
             }
-        }
-    }
-
-    private String getLanguage(String name) {
-        if (name.equals("values")) {
-            return "default";
-        } else {
-            int index = name.indexOf("-");
-            return name.substring(index + 1);
         }
     }
 
